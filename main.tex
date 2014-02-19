@@ -1,0 +1,65 @@
+\include{setup/preamble}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\begin{document}
+%Front page
+\begin{titlepage}
+
+\begin{center}
+
+\HRule \\[0.5cm]
+\textsc{ \Huge Mapping med LEGO-robot}\\
+
+\HRule \\[1cm]
+
+\textsc{\Large SW505E13} \\[2cm]
+
+%picture
+
+\vfill
+{\Large Indlejrede systemer}
+\\ ~\\
+{\large Efterårssemesteret 2013}
+
+\end{center}
+\end{titlepage}
+
+\pagenumbering{Roman}
+
+\clearpage
+
+\input{frontmatter/titelblad.tex}
+\clearpage
+
+\setcounter{page}{4}
+\setcounter{secnumdepth}{3}
+
+\newcommand{\prefaceHeaderName}{Forord}
+\section*{\prefaceHeaderName}
+\input{frontmatter/forord.tex}
+
+\clearpage
+
+%Table of content
+\pdfbookmark{\contentsname}{toc}
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+\clearpage
+
+\pagenumbering{arabic}
+
+% PART ******************************
+\part[Bilag]{Bilag\\
+	\begin{minipage}[c]{10cm}
+	\centering
+	\vspace{2cm}
+	\normalsize{\textnormal{
+		\textit{}
+	}}
+	\end{minipage}
+}
+
+\bibliography{bibliography}
+\bibliographystyle{plain}
+\label{LastPage}
+\end{document}

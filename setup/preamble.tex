@@ -1,0 +1,98 @@
+% Document class, language and encoding setup
+\documentclass[a4paper,12pt,danish]{report}
+
+\usepackage[danish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% Fixing the font issue
+\usepackage{ae,aecompl}
+
+% Color package
+\PassOptionsToPackage{dvipsnames}{xcolor}
+	\RequirePackage{xcolor} % [dvipsnames] 
+	
+% Allows page-links in pdf file
+\usepackage{hyperref}
+\hypersetup{
+% Uncomment the line below to remove all links (to references, figures, tables, etc)
+%draft, 
+%colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,
+% Uncomment the line below if you want to have black links (e.g. for printing black and white)
+colorlinks=true, linktocpage=true, pdfborder={0 0 0}, 
+pdfstartpage=3, pdfstartview=FitV, hypertexnames=true, pdfhighlight=/O, 
+breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines, plainpages=false,
+bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,
+urlcolor=Black, linkcolor=Black, citecolor=Black,
+%------------------------------------------------
+% PDF file meta-information
+%pdftitle={\myTitle},
+%pdfauthor={\textcopyright\ \myName, \myUni, \myFaculty},
+%pdfsubject={},
+%pdfkeywords={},
+%pdfcreator={pdfLaTeX},
+%pdfproducer={LaTeX with hyperref and classicthesis}
+%------------------------------------------------
+} 
+
+\usepackage{pdfpages}
+% Todo notes package and commands
+\usepackage{todonotes}
+% Allows commands to emit a space "at the end"
+\usepackage{xspace}
+%tabularextension
+\usepackage{longtable}
+% Listings setup
+\usepackage{listings}
+
+% Graphics setup
+\usepackage{graphicx}
+\graphicspath{{./graphics/}{./graphics/sensor/}}
+
+\usepackage{tikz}
+
+\usetikzlibrary{calc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Advanced tables
+\usepackage{tabularx}
+\usepackage{multirow}
+
+% Clever references
+\usepackage{cleveref}
+
+% Named references
+\usepackage{nameref}
+
+% Bibliography
+\usepackage[square,numbers]{natbib}
+\bibliographystyle{unsrt}
+
+% Force position [H]
+\usepackage{float}
+
+% For figures with sub-figures
+\usepackage{subcaption}
+
+% Caption package. Makes label of caption bold.
+\usepackage[labelfont=bf]{caption}
+
+% Tikz
+\usepackage{tikz}
+\usetikzlibrary{arrows,backgrounds,snakes}
+ 
+% Additional commands
+\input{./setup/todonotes}
+\input{./setup/lstlisting}
+\input{./setup/commands}
+
+% For fancy pseudocode algoritms
+\usepackage[algochapter,lined,boxed,noend]{algorithm2e}
+\renewcommand{\listalgorithmcfname}{Liste over Algoritmer}
+\renewcommand{\algorithmcfname}{Algoritme}
+\renewcommand{\algorithmautorefname}{algoritme}
+\renewcommand{\algorithmcflinename}{linje}
+
+% Math proofs and stuff.
+\usepackage{amsthm}
+\usepackage{bigints}
