@@ -1,0 +1,24 @@
+In this section we will briefly explain what sound is, in order to explain how to obtain certain characteristics of sound.
+Based on this knowledge, we will argue why it is difficult to obtain frequency from a sound input, especially sound input with human voice.
+The technicalities are based on \cite{music-and-computers}.
+
+\subsection{Characteristics of sound}
+Sound is a physical phenomenon which acts like a wave and therefore have the same characteristics as a wave.
+So basically sound is a movement of air, the way we perceive sound is an interpretation of these movements.
+
+Simply speaking, the volume (or loudness) of a sound, is the amplitude of the sound wave.
+The pitch of a sound, how high/low we perceive it, is the frequency of the sound wave.
+These two characteristics are independent, meaning that two sound waves with same frequency, but different amplitudes, will sound like the same pitch, but one being louder than the other.
+
+There is also a third characteristic, which is more abstract and not directly a physical attribute, namely, timbre.
+Timbre is a composition of different sound waves (spectra), which makes up a specific sound (again, this is perceptual) and envelope (transients), which describe the different stages of a sound.
+
+\subsection{Obtaining frequency}
+Obtaining frequency is fairly simple, as it can read from a sound input interpreted as a wave (specifically; sine function).
+However, some sounds are simpler than others in their composition of waves.
+Some sounds are ''cleaner'' than others, meaning they consist of only a single or very few waves, where it is easy to identify their amplitude and frequency.
+
+Human speech, among other sounds, consists of multiple sound waves, each with varying amplitude and frequency.
+In this case, it may be difficult to point out a single wave as the most important, and choose its frequency as the main frequency.
+
+\subsubsection{Using FFT for obtaining frequency}
