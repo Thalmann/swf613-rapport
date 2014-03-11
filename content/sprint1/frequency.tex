@@ -12,7 +12,8 @@ These two characteristics are independent, meaning that two sound waves with sam
 An example can be seen in \cref{fig:samepitchdiffamp}.
 
 \begin{figure}[h]
-\includegraphics[width=\textwidth]{sprint1/samepitchdiffamp}
+\centering
+\includegraphics[width=.80\textwidth]{sprint1/samepitchdiffamp}
 \caption{Two sound waves (represented as sine functions) with same frequency, but different amplitude.}
 \label{fig:samepitchdiffamp}
 \end{figure}
@@ -27,10 +28,18 @@ These simpler sounds could be considered ''cleaner'' than others, meaning they c
 
 Human speech, among other sounds, consists of multiple sound waves, each with varying amplitude and frequency.
 In this case, it may be difficult to point out a single wave as the most important, and choose its frequency as the main frequency.
-\mikael{Add screenshot from Audacity for illustrating the result of a sound analysis.}
+A comparison between frequency spectra can be seen in \cref{fig:frequency_spectra}.
 
-\subsubsection{Testing with the Cars app}
-
-\subsubsection{Testing with Audacity}
-
-\subsubsection{Using FFT for obtaining frequency}
+\begin{figure}[h]
+\centering
+\begin{subfigure}[t]{.45\textwidth}
+\includegraphics[width=\textwidth]{sprint1/spectrum_tonegenerator}
+\caption{Frequency spectrum for a 440 Hz generated tone}
+\end{subfigure}
+\begin{subfigure}[t]{.45\textwidth}
+\includegraphics[width=\textwidth]{sprint1/spectrum_highpitchvoice}
+\caption{Frequency spectrum for human voice input (in an attempt to do a high pitch)}
+\end{subfigure}
+\caption{Frequency analysis in Audacity}
+\label{fig:frequency_spectra}
+\end{figure}
