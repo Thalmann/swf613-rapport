@@ -1,6 +1,10 @@
-In this section we will briefly explain what sound is, in order to explain how to obtain certain characteristics of sound.
-Based on this knowledge, we will argue why it is difficult to obtain frequency from a sound input, especially sound input with human voice.
-The technicalities are based on \cite{music-and-computers}.
+The current method of controlling the player (the car) in Cars, is based on sound input.
+When the game is running, voice input is continually recorded and analysed, in order to detect the pitch of the sound input, so that the direction in which to move the car can be decided.
+The current method of analysing this is by using Fast Fourier's Transformation (FFT) and subsequently choosing the loudest frequency.
+
+In this section we will briefly explain what sound is, in order to understand how to obtain certain characteristics of sound.
+Based on this knowledge we will argue why it is difficult to obtain frequency from a sound input, especially sound input with human voice.
+The technicalities in the section are based on \cite{music-and-computers}.
 
 \subsection{Characteristics of sound}
 Sound is a physical phenomenon which acts like a wave and therefore have the same characteristics as a wave.
@@ -38,8 +42,11 @@ A comparison between frequency spectra can be seen in \cref{fig:frequency_spectr
 \end{subfigure}
 \begin{subfigure}[t]{.45\textwidth}
 \includegraphics[width=\textwidth]{sprint1/spectrum_highpitchvoice}
-\caption{Frequency spectrum for human voice input (in an attempt to do a high pitch)}
+\caption{Frequency spectrum for human voice input (in an attempt to reach high pitch)}
 \end{subfigure}
 \caption{Frequency analysis in Audacity}
 \label{fig:frequency_spectra}
 \end{figure}
+
+\subsection{Using FFT}
+
