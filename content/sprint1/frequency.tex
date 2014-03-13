@@ -7,7 +7,7 @@ Based on this knowledge we will argue why it is difficult to obtain frequency fr
 The technicalities in the section are based on \cite{music-and-computers}.
 
 \subsection{Characteristics of sound}
-Sound is a physical phenomenon which acts like a wave and therefore have the same characteristics as a wave.
+Sound is a physical phenomenon which acts like a wave and therefore has the same characteristics as a wave.
 So basically sound is a movement of air and the way we perceive sound is an interpretation of these movements.
 
 Simply speaking, the volume (or loudness) of a sound, is the amplitude of the sound wave.
@@ -43,10 +43,31 @@ A comparison between frequency spectra can be seen in \cref{fig:frequency_spectr
 \begin{subfigure}[t]{.45\textwidth}
 \includegraphics[width=\textwidth]{sprint1/spectrum_highpitchvoice}
 \caption{Frequency spectrum for human voice input (in an attempt to reach high pitch)}
+\label{fig:humanvoice_spectra}
 \end{subfigure}
 \caption{Frequency analysis in Audacity}
 \label{fig:frequency_spectra}
 \end{figure}
 
 \subsection{Using FFT}
+Fast Fouriers Transform (FFT) is a method of extracting the smaller components of a sound input.
+As mentioned previously, a sound is a composition of several sound waves with each their own frequency and amplitude.
+Therefore the result of the FFT on a sound input, is the existing frequencies and their amplitudes.
+The result is called a frequency spectrum and can be seen in \cref{fig:frequency_spectra}.
 
+\subsubsection{Cars and FFT}
+In Cars, part of the method of extracting a frequency from the sound recording, is by using FFT.
+Since exactly how and why exactly the frequency spectrum is used for extracting a single frequency was not properly documented in the Cars report, it is only certain that the result from the FFT and the following manipulation leads to a single frequency value.
+This value is then used to in comparison with the calibrated low and high threshold values, to determine in which direction to move the car.
+
+This poses several problems.
+Firstly, human speech is complex and contains very many different individual sound waves.
+It can easily happen that what sounds to us like a high pitch voice, will peak at a much lower frequency, as higher amplitude low frequency sounds will not always sound as loud as lower amplitude high frequency sounds.
+This is due to our perception of sound.
+An example of this can be seen in \cref{fig:humanvoice_spectra}, where in an attempt to hit a high frequency of approximately 1200 Hz, the highest peak was actually at approximately 600 Hz.
+
+Another problem is the method of grouping together frequencies linearly in the FFT method.
+Our hearing is logarithmic, meaning that a slight change in frequency is much more apparent to our perception at lower frequencies, than at higher frequencies.
+When analysing the input, frequencies are not registered as their exact frequency, but are grouped together in ranges, linearly.
+This means that lower frequencies that are very different in regards to pitch may be grouped together.
+This impacts the result of the analysis, where one group of frequencies will have a higher amplitude, without it being the one we thought was the most apparent to our perception.
