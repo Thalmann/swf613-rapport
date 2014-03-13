@@ -1,6 +1,6 @@
-It seems that the authors of the code are not familiar with the OOP term inheritance.
-Inheritance in OOP is when you have a class based on an other class.
-This is useful for code reuse.
+It seems that the authors of the code are not familiar with the object oriented programming concept inheritance.
+Inheritance in object oriented programming is when you have a class based on an other class.
+This prevents code duplication which improves maintainability
 
 An example of good use of inheritance is if we have a class called \textit{Vehicle}.
 Which e.g. has a method \textit{ChangeOwner} and a field \textit{RegistrationNumber}.
@@ -8,20 +8,20 @@ We can then make a specialisation of \textit{Vehicle} e.g. called \textit{Car} a
 These two new classes can now also use the method and field there is in \textit{Vehicle}.
 This means the code gets reused, instead of having it in both \textit{Car} and \textit{Truck} we have it only in \textit{Vehicle}.
 
-An example from 'Cars' is the class \textit{GameObject} which is an empty super class to the following classes:
+An example from 'Cars' is the class \lstinline!GameObject! which is an empty super class to the following classes:
 
 \begin{tabular}{ c  c }
 \parbox{\textwidth/2}{
 \begin{itemize}
-\item Barricade
-\item Bump
-\item Car
+\item \lstinline!Barricade!
+\item \lstinline!Bump!
+\item \lstinline!Car!
 \end{itemize}} &
 \parbox{\textwidth/2}{
 \begin{itemize}
-\item Cat
-\item Garage
-\item Rock
+\item \lstinline!Cat!
+\item \lstinline!Garage!
+\item \lstinline!Rock!
 \end{itemize}
 }
 \end{tabular}
