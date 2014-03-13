@@ -1,11 +1,11 @@
 A problem throughout the code is that basic object oriented principles are not used or are not used properly. 
 Classes do not have a clearly defined responsibility, and functionality is instead spread out on several classes. 
-This breaks the concept of keeping low cohesion in object oriented design. 
+This breaks the concept of keeping high cohesion in object oriented design. 
 Cohesion is a measure of how the responsibilities of a module are related. 
 If the responsibilities are highly related, the module is said to have high cohesion.
 An advantage of high cohesion is that it improves maintainability of the system, because changes in one module requires fewer changes in other modules. \stefan{source på cohesion (OOAD)?}
 
-An example of low cohesion in the cars project is the \lstinline!Car! class.\stefan{reference?} 
+An example of low cohesion in the cars project is the \lstinline!Car! class(\cref{car_class}).
 This class has the responsibility to draw itself, move itself according to pitch of the sound recorded by the microphone, calculate collisionboxes and determine if the car has collided with an obstacle and close the garage if the car has driven into the goal garage.
 
 Another concept the existing code breaks is coupling.
@@ -15,6 +15,6 @@ Low coupling has the advantage of making it easier to make changes in module, as
 
 When trying to change the existing implementation of control of the car by pitch to control by volume, it turned out to be very hard.\stefan{possibly a reference to FFT analysis chapter}
 Because the code responsible for handling the pitch is spread out on several classes, this relatively simple change becomes very complicated.
-Another example is the responsibility for drawing objects which is on the individual object. 
+Another example is the responsibility for drawing objects which is on the individual object instead of using inheritance as described in \cref{sprint1_inheritance}. 
 This makes it very hard to make consistent changes to the way objects are drawn.
 \stefan{code examples?} 
