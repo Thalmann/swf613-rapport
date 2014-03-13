@@ -49,4 +49,23 @@ A comparison between frequency spectra can be seen in \cref{fig:frequency_spectr
 \end{figure}
 
 \subsection{Using FFT}
+Fast Fouriers Transform (FFT) is a method of extracting the smaller components of a sound input.
+As mentioned previously, a sound is a composition of several sound waves with each their own frequency and amplitude.
+Therefore the result of the FFT on a sound input, is the existing frequencies and their amplitudes.
+The result is called a frequency spectrum and can be seen in \cref{fig:frequency_spectra}.
 
+\subsubsection{Cars and FFT}
+In Cars, part of the method of extracting a frequency from the sound recording, is by using FFT.
+It is still unclear how and why exactly the frequency spectrum is used for extracting a single frequency, it is only certain that the result from the FFT and the following manipulation leads to a single frequency value.
+This single value is then used to compare with the calibrated minimum and maximum values, to determine in which direction to move the car.
+
+This poses several problems.
+Firstly, human speech is complex and contains very many different individual sound waves.
+It can easily happen that what sounds to us like a high pitch voice, will peak at a much lower frequency, as higher amplitude low frequency sounds will not always sound as loud as lower amplitude high frequency sounds.
+This is due to our perception of sound.
+
+Another problem is the method of grouping together frequencies linearly in the FFT method.
+Our hearing is logarithmic, meaning that a slight change in frequency is much more apparent to our perception at lower frequencies, than at higher frequencies.
+When analysing the input, frequencies are not registered as their exact frequency, but are grouped together in ranges, linearly.
+This means that lower frequencies that are very different in regards to tone, may be grouped together.
+This impacts the result of the analysis, where one group of frequencies will have a higher amplitude, without it being the one we thought was the most apparent to our perception.
