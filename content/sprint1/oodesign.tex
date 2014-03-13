@@ -15,6 +15,6 @@ Low coupling has the advantage of making it easier to make changes in module, as
 
 When trying to change the existing implementation of control of the car by pitch to control by volume, it turned out to be very hard.\stefan{possibly a reference to FFT analysis chapter}
 Because the code responsible for handling the pitch is spread out on several classes, this relatively simple change becomes very complicated.
-Another example is the responsibility for drawing objects which is on the individual object. 
+Another example is the responsibility for drawing objects which is on the individual object instead of using inheritance as described in \cref{sprint1_inheritance}. 
 This makes it very hard to make consistent changes to the way objects are drawn.
 \stefan{code examples?} 
