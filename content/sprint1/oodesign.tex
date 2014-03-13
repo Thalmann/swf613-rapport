@@ -1,0 +1,13 @@
+A problem throughout the code is that basic object oriented principles are not used or are not used properly. 
+Classes do not have a clearly defined responsibility, and functionality is instead spread out on several classes. 
+This breaks the concept of keeping low cohesion in object oriented design. 
+Cohesion is a measure of how the responsibilities of a module are related. 
+If the responsibilities are highly related, the module is said to have high cohesion.
+An advantage of high cohesion is that it improves maintainability of the system, because changes in one module requires fewer changes in other modules. \stefan{source på cohesion (OOAD)?}
+
+Another concept the existing code broke is coupling.
+Coupling is the concept of keeping the number of dependencies between modules as low as possible, known as having low coupling.
+
+The fact that the existing code had very high coupling proved it very difficult to change their implementation of control by pitch to control by volume.\stefan{evt. reference to FFT analysis chapter}
+Small changes in the existing modules requires extensive refactoring thr\-oughout the system 
+\stefan{example?} 
