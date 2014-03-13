@@ -5,7 +5,7 @@
 % 
 % Listings kan refereres vha. \cref{}
 \crefname{listing}{code example}{code example}
-\Crefname{listing}{Kodeeksempel}{code examples}
+\Crefname{listing}{Code example}{code examples}
 % 
 
 %Algoritmer i cref
@@ -14,8 +14,8 @@
 %
 
 % Angivelse af navn på listings
-\renewcommand\lstlistingname{Kodeeksempel}
-\renewcommand\lstlistlistingname{Kodeeksempler}
+\renewcommand\lstlistingname{Code example}
+\renewcommand\lstlistlistingname{Code example}
 
 \lstdefinestyle{standard}
 {
@@ -34,6 +34,8 @@
 	escapeinside={(*}{*)},
 	breaklines=true
 }
+
+\lstset{style=standard}
 
 \lstdefinestyle{c}
 {
@@ -67,3 +69,4 @@
 	style=fsharp,
 	basicstyle=\ttfamily\footnotesize
 }
+
