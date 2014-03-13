@@ -8,4 +8,24 @@ We can then make a specialisation of \textit{Vehicle} e.g. called \textit{Car} a
 These two new classes can now also use the method and field there is in \textit{Vehicle}.
 This means the code gets reused, instead of having it in both \textit{Car} and \textit{Truck} we have it only in \textit{Vehicle}.
 
-cars example
+An example from 'Cars' is the class \textit{GameObject} which is an empty super class to the following classes:
+
+\begin{tabular}{ c  c }
+\parbox{\textwidth/2}{
+\begin{itemize}
+\item Barricade
+\item Bump
+\item Car
+\end{itemize}} &
+\parbox{\textwidth/2}{
+\begin{itemize}
+\item Cat
+\item Garage
+\item Rock
+\end{itemize}
+}
+\end{tabular}
+The classes shown above all have a \textit{draw} method which are identical.
+This is a classic example on a method which should have been in the super class.
+If it would have been in the super class all its derived classes could have used the method.
+This would then be good code reuse.
