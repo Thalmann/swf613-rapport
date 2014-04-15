@@ -1,10 +1,10 @@
-The current method of controlling the player (the car) in Cars, is based on sound input.
+The current method of controlling the car is based on sound input.
 When the game is running, voice input is continually recorded and analysed, in order to detect the pitch of the sound input, so that the direction in which to move the car can be decided.
 The current method of analysing this is by using Fast Fourier's Transformation (FFT) and subsequently choosing the loudest frequency.
 
 In this section we will briefly explain what sound is, in order to understand how to obtain certain characteristics of sound.
 Based on this knowledge we will argue why it is difficult to obtain frequency from a sound input, especially sound input with human voice.
-The technicalities in the section are based on \cite{music-and-computers}.
+The technicalities in the section are based on the work of \citet{music-and-computers}.
 
 \subsection{Characteristics of sound}
 Sound is a physical phenomenon which acts like a wave and therefore has the same characteristics as a wave.
@@ -26,12 +26,12 @@ There is also a third characteristic, which is more abstract and not directly a 
 Timbre is a composition of different sound waves (spectra), which makes up a specific sound (again, this is perceptual) and envelope (transients), which describe the different stages of a sound.
 
 \subsection{Obtaining frequency}
-Obtaining frequency is fairly simple, as it can read from a sound input interpreted as a wave (sine function).
+The frequency of a sound can be obtained from a sound input interpreted as a wave (sine function).
 However, some sounds are simpler than others in their composition of waves.
 These simpler sounds could be considered ''cleaner'' than others, meaning they consist of only a single or very few waves, where it is easy to identify a primary amplitude and frequency.
 
 Human speech, among other sounds, consists of multiple sound waves, each with varying amplitude and frequency.
-In this case, it may be difficult to point out a single wave as the most important, and choose its frequency as the main frequency.
+In this case, it may be difficult to identify a single wave as the most important, and choose its frequency as the main frequency.
 A comparison between frequency spectra can be seen in \cref{fig:frequency_spectra}.
 
 \begin{figure}[h]
@@ -42,7 +42,7 @@ A comparison between frequency spectra can be seen in \cref{fig:frequency_spectr
 \end{subfigure}
 \begin{subfigure}[t]{.45\textwidth}
 \includegraphics[width=\textwidth]{sprint1/spectrum_highpitchvoice}
-\caption{Frequency spectrum for human voice input (in an attempt to reach high pitch)}
+\caption{Frequency spectrum for human voice input (in an attempt to reach 1200Hz)}
 \label{fig:humanvoice_spectra}
 \end{subfigure}
 \caption{Frequency analysis in Audacity}
@@ -57,12 +57,12 @@ The result is called a frequency spectrum and can be seen in \cref{fig:frequency
 
 \subsubsection{Cars and FFT}
 In Cars, part of the method of extracting a frequency from the sound recording, is by using FFT.
-Since exactly how and why exactly the frequency spectrum is used for extracting a single frequency was not properly documented in the Cars report, it is only certain that the result from the FFT and the following manipulation leads to a single frequency value.
+How and why exactly the frequency spectrum is used for extracting a single frequency was not properly documented in the Cars report, it is only certain that the result from the FFT and the following manipulation leads to the loudest frequency value.
 This value is then used to in comparison with the calibrated low and high threshold values, to determine in which direction to move the car.
 
 This poses several problems.
-Firstly, human speech is complex and contains very many different individual sound waves.
-It can easily happen that what sounds to us like a high pitch voice, will peak at a much lower frequency, as higher amplitude low frequency sounds will not always sound as loud as lower amplitude high frequency sounds.
+Firstly, human speech is complex and contains many different individual sound waves.
+What sounds to us like a high pitch voice, can easily peak at a much lower frequency, as higher amplitude low frequency sounds will not always sound as loud as lower amplitude high frequency sounds.
 This is due to our perception of sound.
 An example of this can be seen in \cref{fig:humanvoice_spectra}, where in an attempt to hit a high frequency of approximately 1200 Hz, the highest peak was actually at approximately 600 Hz.
 
