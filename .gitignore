@@ -1,3 +1,7 @@
+# Ignoring all files starting with tmp
+tmp*
+
+# All kinds of latex related files
 *.acn
 *.acr
 *.alg
@@ -31,4 +35,4 @@
 *.xdy
 *.tdo
 main.pdf
-_*
+*.bat
