@@ -34,4 +34,5 @@ tmp*
 *.vrb
 *.xdy
 *.tdo
-*.pdf
+main.pdf
+*.bat
