@@ -1,0 +1,43 @@
+\subsection{Suggestion}
+To best avoid ending in a situation similar to the above, it was deemed important that a framework was found on top of which the new game could be built.
+Such a framework could define a \textit{proper} structure for game development, allowing the project group to focus solely on the actual game development
+
+\paragraph{Kilobolt}\label{kilobolt:description}
+In \textit{''Beginning Android Games''}\cite{androidgames} an open source framework is suggested for game development.
+The framework is presented and described on kilobolt.com\cite{kilobolt} using a simple example of a game.
+The framework generalizes Java game development by defining a set of interfaces describing the structure of a game.
+
+On top of these interfaces an Android version is implemented specifying how the generalized framework should be executed on Android devices.
+In the implementations presented on kilobolt.com there are some inconsistencies between the interfaces and Android implementations.
+An example of this is that in some cases the Android implementation defines more methods than the interface that is implemented.
+Any such inconsistencies would have to be fixed if implementing for multiple platforms.
+Simultaneously any future expansion of the framework would require all methods to be defined in both interfaces and Android implementations. 
+
+Since the project for which the framework is used is Android-only, the generalized part of the framework was removed.
+
+\subsubsection{The framework}
+The following gives a description of the internals of the framework described above.
+Not every class in the framework will be described as not all are essential to its functionality.
+
+\paragraph{The Game Activity}
+A game in the framework is implemented as an activity, allowing for simple interoperability with other Android components.
+The game itself is primarily a shell, connecting the parts of the framework.
+Actually implementing a game is done via screens.
+A screen defines a \textit{state} in a game, drawing context specific graphics.
+A game defines its initial screen, and screens are capable of replacing the active screen of a game.
+Using this method, parts of a game can be implemented separate of the remaining game, resulting in higher cohesion.
+
+\paragraph{Rendering}
+In order to handle continuous updates of a game (frames) a separate thread is started, which performs these updates.
+The thread uses a canvas for drawing, which is exposed only through a set of methods that draw on it.
+Using this method rendering can be handled directly in screens without access to the canvas itself.
+Ensuring that all drawing is done this way gives a low coupling of the rendering aspect of games.
+
+Besides the canvas, the render-thread also uses a bitmap buffer which the canvas uses for drawing.
+Whenever a new frame has been drawn, using the methods described above, the game activitys visual are updated, drawing the content of the buffer onto the view associated with the activity.
+After the update a new frame-render is started.
+
+As the rendering of frames is done continuously in a separate thread, there is no way to ensure a fixed framerate.
+Instead the thread stores a timestamp whenever a frame has been rendered.
+This is then later used to determine the time the has passed since the last frame.
+This information can be used to properly update changes in a game, such as ensuring that a car moves at a constant speed.
