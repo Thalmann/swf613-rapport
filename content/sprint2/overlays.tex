@@ -1,0 +1,21 @@
+\subsection{Screen overlays}
+At certain stages of the game, we need to display overlays, containing important information and/or buttons for navigation.
+
+The game screen contains the following overlays:
+
+\begin{itemize}
+\item Starting,
+\item Paused,
+\item Crashed, and
+\item Won.
+\end{itemize}
+
+All of the screens can be seen in \cref{sprint2:overlays:fig}.
+
+\paragraph{Starting Overlay} is displayed when a new game is started (from either the main menu or the Win Overlay).
+It is a short countdown, enabling the player to get ready, as opposed to starting the game straight away, or simply waiting without any feedback for the player.
+It is a 3 second countdown (3.. 2.. 1.. Go), as can be seen in \cref{sprint2:overlays:fig:starting}.
+
+\paragraph{Paused overlay} is linked to requirement 9, which states: \textit{It should be possible to pause the game. When the game is paused, a loudness-barometer is displayed next to the car, further visualizing the current loudness.}
+At all times when in the game screen, a pause button is visible in the top left corner.
+When pressed, the game is paused (the car stops moving) and the loudness gauge is displayed (see \cref{sprint2:overlays:fig:paused}).
