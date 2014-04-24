@@ -28,3 +28,12 @@
   \vspace{1.5em}
   \par
 }
+
+%enumerate tabulars
+\newcounter{tabular_enumerator}
+\newenvironment{tabularenumerate}
+{
+\newcommand{\tabenum}{\refstepcounter{tabular_enumerator} \arabic{tabular_enumerator}.}
+}{\setcounter{tabular_enumerator}{0}}
+\crefname{tabular_enumerator}{requirement}{requirement}
+\Crefname{tabular_enumerator}{Requirement}{Requirement}
