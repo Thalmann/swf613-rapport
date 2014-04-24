@@ -19,10 +19,16 @@ A screenshot of the settings activity can be seen in \cref{sprint2:settings:fig}
 \paragraph{Speed} is changed by tapping the ends of a small fragment of the game, displaying only one lane and the moving car.
 By tapping the left end, the speed is decreased and by tapping the right, it is increased.
 Whenever a change to speed is made, it is immediately visible in the game fragment.
+The ability to alter the speed is directly related to requirement \ref{sprint2:tab1:req10}.
 
 \paragraph{Color} is as of now changed by picking a color from a dropdown box.
-\mikael{This however is supposed to be a color picker, but it was at creation time not in the graphics components library (giraf-components).}
+This is not stated as a requirement, but is a feature that was implemented by the previous Cars project.
 
 \paragraph{Microphone Calibration} is done in a small game fragment, as can be seen in the bottom of the settings screenshot.
+This is in regards to requirement \ref{sprint2:requirements:calibrate}.
 The way it is done atm, is when holding either 'H\o j' (high) or 'Lav' (low) down, during this time the microphone records and when they are released the average of all the recordings during the time are averaged and set as the appropriate threshold value.
-\mikael{This does not work well. Also, the fragment was supposed to show the car moving up and down, so that the current calibration and its effect on the car could be seen.}
+
+
+\paragraph{Requirement \ref{sprint2:requirements:profile}} regarding loading and saving settings to a profile is not yet implemented.
+
+\paragraph{Requirements \ref{sprint2:requirements:avoidorpickup} and \ref{sprint2:requirements:categorymode}} regarding picking up category pictograms is not yet implemented either.
