@@ -8,5 +8,19 @@ This is expressed in requirement \ref{carcontrolReq} which is as follows:
 \end{enumerate}
 
 This has been implemented in the game by mapping the values recorded by the microphone to a range that corresponds to the height of the screen.
+This mapping is shown on \cref{mapping}.
+The microphone records sounds and outputs values between 0 and some max value, shown as 1000 for simplicity.
+When calibrating the microphone two values are defined, the minimum value reflecting background noise caught by the microphone, and the maximum value determined by the sound level of the player's shouting.
+These two values are mapped to values between 0 and the size of the screen, in the example 800.
 
+The returned value is the position on the screen where the car needs to drive towards at the current sound level.
+
+\begin{figure}
+\centering
 \input{content/sprint2/tikz-control-mapping}
+\caption{The mapping from microphone input to position on the screen}
+\label{mapping}
+\end{figure}
+
+\stefan{pseudoalgoritme?}
+
