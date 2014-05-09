@@ -1,0 +1,10 @@
+\section{Connection to the database}
+In order to save the settings of the current user and make it available on all tablets with the Giraf applications installed, it is necessary to connect to the database.
+This requirement in stated in \cref{sprint2_database_req} in \cref{sprint2:requirement_table_2}.
+For this purpose the \lstinline!DatabaseHelper! class was created.
+This class contains methods for saving and loading settings from the database. 
+
+When the Cars application is launched, a \lstinline!child_id! is passed to the application. 
+This identification number identifies the child that is currently using the tablet.
+This identification number is used to load the correct settings when they are needed, which is in the game, in the settings window and in the mapeditor.
+The settings are saved to the database when either the settings window or the mapeditor is closed.
