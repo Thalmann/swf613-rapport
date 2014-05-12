@@ -33,11 +33,11 @@ The thread uses a canvas for drawing, which is exposed only through a set of met
 Using this method rendering can be handled directly in screens without access to the canvas itself.
 Ensuring that all drawing is done this way gives a low coupling of the rendering aspect of games.
 
-Besides the canvas, the render-thread also uses a bitmap buffer which the canvas uses for drawing.
+Besides the canvas, the render-thread also uses a bitmap buffer which the canvas uses for drawing.\bruno{double buffering}
 Whenever a new frame has been drawn, using the methods described above, the game activitys visual are updated, drawing the content of the buffer onto the view associated with the activity.
 After the update a new frame-render is started.
 
-As the rendering of frames is done continuously in a separate thread, there is no way to ensure a fixed framerate.
+As the rendering of frames is done continuously in a separate thread, there is no way to ensure a fixed framerate.\bruno{thomas: frame independent movement}
 Instead the thread stores a timestamp whenever a frame has been rendered.
 This is then later used to determine the time the has passed since the last frame.
 This information can be used to properly update changes in a game, such as ensuring that a car moves at a constant speed.
