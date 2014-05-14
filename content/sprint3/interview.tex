@@ -1,11 +1,93 @@
 \section{Interview}
 
-intro
+An interview was carried out on the May 8th 2014 with the speech therapist Tove L. Søby.
+Tove was the contact person who was related to the original cars project \ref{oldcars}.
+We would have liked to have an interview with Tove much earlier, but communication problems throughout the project period (and a wrong email) caused the interview to be in the fourth sprint.
 
 \subsection{Purpose}
+The purpose of this interview was to get answers to some key questions about the fundamental purpose of the game. 
+Tove is the pedagogue with the closest connection to the app and it is important that the product complies to her requirements.
+
+\subsection{Planning}
+Before the execution of the interview a number of questions and doubts was collected.
+
+
+One doubt was whether the garages at the end of the track made sense, since the purpose of the game was to avoid obstacles in order to learn the citizen to talk at a specific sound level.
+The garages forced the citizen to use three levels in every game played.
+
+Is it preferred that the citizen has to avoid obstacles or is it better that they need to collect items. 
+
+Another question was if using sounds in the game was a good idea.
+
+A major doubt from the group prior to the interview was whether the citizen was supposed to produce a continuous sound or if it should be spoken words.
+This would have a tremendous impact on the way the control of the car would need to work.
+
+The last question was whether the text on the buttons needed to be changed to pictograms in order to make it easier for the citizen to understand.
 
 \subsection{Result}
+The result of the interview will be listed here as a list of requirements and changes to the app.
 
 \begin{enumerate}
-\item t
+\item The garages needs to be removed and replaced with a simple finishing line
+\item Button texts needs to be renamed. ``Fortsæt'' will become ``Ny tur'', and ``Menu'' will become ``Færdig''.
+\item The game objective needs to be to collect items instead of avoiding them. The old game mode can be a setting.
+\item Sounds at key events. Car revving at the countdown screen. Sound when collecting/colliding with things.
+A jingle when the game is won.
+\item All buttons need to say their text when pressed.
+\item The citizen is supposed to say small words when controlling the game such as ``na - na - na''. It is not supposed to be a continuous sound.
 \end{enumerate}
+
+\subsection{Requirements}
+According to the information gathered during the interview the requirements have been update and is available in \cref{sprint3:requirement_table}.
+
+Changes have been made to \cref{sprint3_objective} while \cref{sprint3_sounds} and \cref{sprint3_buttonspeak} has been added.
+
+The old requirement ``When picking objects up, this is linked to pictogram categories.'' was deleted. 
+Objects that need to be picked up should use icons from a small selection of different icons (or even just one).
+
+\begin{tabularenumerate}
+\begin{longtable}{c|l|c|c}
+\textbf{\#} & \textbf{Requirement} & \textbf{Solved} & \textbf{Link} \\
+\hline
+\tabenum & \begin{tabular}[l]{@{}l@{}}The game must not be a side-scrolling game,\\because the citizen must be able to see the goal\end{tabular}
+ & $\surd$ & \cref{sprint1:req1} \\
+\hline
+\tabenum \label{sprint3_control} & \begin{tabular}[l]{@{}l@{}} The car is controlled in such a way,\\that the vertical position of the car is relative\\ to the current loudness of the player's voice.\end{tabular}& $\surd$ & \cref{sprint2:car_control} \\
+\hline
+\tabenum \label{sprint3_objective} & \begin{tabular}[l]{@{}l@{}} The goal of the game is to reach the finishing line\\ after successfully collecting all items or avoiding \\ all items (two different game modes) \end{tabular} & $\times$ & - \\
+\hline
+\tabenum  & When the game is won an reward should be given & $\surd$ & \cref{sprint2:won} \\
+\hline
+\tabenum & \begin{tabular}[l]{@{}l@{}}It must be possible\\to save and load settings for a specific profile\end{tabular} & $\times$ & - \\
+\hline
+\tabenum & It must be possible to calibrate the microphone & $\times$ & - \\
+\hline
+\tabenum  & \begin{tabular}[l]{@{}l@{}}There is a digit between 0 and 10\\ displayed on the car as well as obstacles,\\ representing the loudness level,\\ based on its vertical position.\end{tabular} & $\surd$ & \cref{sprint2:gauges} \\
+\hline
+\tabenum  & \begin{tabular}[l]{@{}l@{}}Besides the scales from 0 to 10,\\ both speed and loudness have pictograms\\ illustrating some of the values on these scales.\end{tabular} & $\times$ & - \\
+\hline
+\tabenum  & \begin{tabular}[l]{@{}l@{}}It should be possible to pause the game.\\ When the game is paused,\\ a loudness-barometer is displayed next to the car,\\ further visualizing the current loudness.\end{tabular} & $\surd$ & \cref{sprint2:paused} \\
+\hline
+\tabenum  & \begin{tabular}[l]{@{}l@{}}Speed is alterable. The speed level\\ is represented as a digit between 0 and 10.\end{tabular} & $\times$ & - \\
+\hline
+\tabenum  & \begin{tabular}[l]{@{}l@{}}The placement and number of obstacles\\ is alterable.\end{tabular} & $\surd$ & \cref{sprint2:map_editor} \\
+\hline
+\tabenum & \begin{tabular}[l]{@{}l@{}}The placement of obstacles should be\\ in such a way,\\ that it is possible to adapt it to both citizen\\ with tendency to speaking too loud\\ as well as those speaking too low.\end{tabular} & $\surd$ & \cref{sprint2:map_editor} \\
+\hline
+\tabenum & \begin{tabular}[l]{@{}l@{}}The graphics need to be simple,\\ as some citizens have a low attention span\\ and are easily distracted.\end{tabular} & $\surd$ & \cref{sprint2:graphics} \\
+\hline
+\tabenum  & \begin{tabular}[l]{@{}l@{}}It should be possible, in settings, to switch\\ between avoiding objects and picking objects up.\end{tabular} & $\times$ & - \\
+\hline
+\tabenum & \begin{tabular}[l]{@{}l@{}}It is important that the pickup/category\\ ''mode'' is optional, due to different capabilities\\ for each citizen.\end{tabular} & $\times$ & - \\
+\hline
+\tabenum \label{sprint3_sounds}& \begin{tabular}[l]{@{}l@{}} The game must use sounds at key events,\\ such as Car revving at the countdown screen.\\ Sound when collecting/colliding with things.\\
+A jingle when the game is won.
+\end{tabular}  & $\times$ & - \\
+\hline
+\tabenum \label{sprint3_buttonspeak}& \begin{tabular}[l]{@{}l@{}} All buttons need to read their text when pressed.
+\end{tabular} & $\times$ & - \\
+\hline
+\caption{Requirements fulfilled after sprint 1.}
+\label{sprint3:requirement_table}
+\end{longtable}
+\end{tabularenumerate}
