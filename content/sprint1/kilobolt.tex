@@ -1,15 +1,15 @@
-\subsection{Suggestion}
+\subsection{Redesigning Cars}
 To best avoid ending in a situation similar to the above, it was deemed important that a framework was found on top of which the new game could be built.
-Such a framework could define a \textit{proper} structure for game development, allowing the project group to focus solely on the actual game development
+Such a framework could define a \textit{proper} structure for game development, allowing the project group to focus solely on the game development without having to consider android.
 
 \paragraph{Kilobolt}\label{kilobolt:description}
 In \textit{''Beginning Android Games''}\cite{androidgames} an open source framework is suggested for game development.
 The framework is presented and described on kilobolt.com\cite{kilobolt} using a simple example of a game.
 The framework generalizes Java game development by defining a set of interfaces describing the structure of a game.
 
-On top of these interfaces an Android version is implemented specifying how the generalized framework should be executed on Android devices.
+These interfaces are then implemented in an Android version specifying how the generalized framework should be executed on Android devices.
 In the implementations presented on kilobolt.com there are some inconsistencies between the interfaces and Android implementations.
-An example of this is that in some cases the Android implementation defines more methods than the interface that is implemented.
+An example of this is that in some cases the Android implementation defines more methods than the interface.
 Any such inconsistencies would have to be fixed if implementing for multiple platforms.
 Simultaneously any future expansion of the framework would require all methods to be defined in both interfaces and Android implementations. 
 
@@ -18,7 +18,7 @@ Since the project for which the framework is used is Android-only, the generaliz
 \subsubsection{The framework}
 The following gives a description of the internals of the framework described above.
 Not every class in the framework will be described as not all are essential to its functionality.
-
+\bruno{UML klassediagram over vores implementation}
 \paragraph{The Game Activity}
 A game in the framework is implemented as an activity, allowing for simple interoperability with other Android components.
 The game itself is primarily a shell, connecting the parts of the framework.
@@ -33,11 +33,11 @@ The thread uses a canvas for drawing, which is exposed only through a set of met
 Using this method rendering can be handled directly in screens without access to the canvas itself.
 Ensuring that all drawing is done this way gives a low coupling of the rendering aspect of games.
 
-Besides the canvas, the render-thread also uses a bitmap buffer which the canvas uses for drawing.
+Besides the canvas, the render-thread also uses a bitmap buffer which the canvas uses for drawing.\bruno{double buffering}
 Whenever a new frame has been drawn, using the methods described above, the game activitys visual are updated, drawing the content of the buffer onto the view associated with the activity.
 After the update a new frame-render is started.
 
-As the rendering of frames is done continuously in a separate thread, there is no way to ensure a fixed framerate.
+As the rendering of frames is done continuously in a separate thread, there is no way to ensure a fixed framerate.\bruno{thomas: frame independent movement}
 Instead the thread stores a timestamp whenever a frame has been rendered.
 This is then later used to determine the time the has passed since the last frame.
 This information can be used to properly update changes in a game, such as ensuring that a car moves at a constant speed.
