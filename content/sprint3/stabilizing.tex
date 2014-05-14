@@ -1,2 +1,8 @@
 \section{Stabilizing the car}
-
+\mikkel{Jeg ved ikke hvor det her skal placeres - og der mangler nok referencer til nogle andre afsnit...}
+The cars' vertical motion is determined by voice input.
+Using the volume recorded by the microphone, a value in the interval $[0-1]$ is calculated, where 0 represents silence and 1 represents \textit{maximum} volume.
+This value is then mapped linearly to a vertical position in the game.
+After this calculation is completed and a final value is determined, the car must be moved.
+In the following sections several methods for moving the car will be discussed.
+The aforementioned processing of voice input will not be explained further, due to its relatively simple mathematical principles.
