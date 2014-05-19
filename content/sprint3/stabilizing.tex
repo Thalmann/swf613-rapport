@@ -1,8 +1,25 @@
 \section{Stabilizing the car}
-\mikkel{Jeg ved ikke hvor det her skal placeres - og der mangler nok referencer til nogle andre afsnit...}
+\mikkel{Jeg ved ikke hvor det her skal placeres...}
 The cars' vertical motion is determined by voice input.
 Using the volume recorded by the microphone, a value in the interval $[0-1]$ is calculated, where 0 represents silence and 1 represents \textit{maximum} volume.
 This value is then mapped linearly to a vertical position in the game.
 After this calculation is completed and a final value is determined, the car must be moved.
-In the following sections several methods for moving the car will be discussed.
-The aforementioned processing of voice input will not be explained further, due to its relatively simple mathematical principles.
+
+\paragraph{Positioning the car}
+Given a vertical position where the car \textit{should} be placed, the car could simple be moved to its destination on each frame update.
+This is the simplest solution as it requires no additional translation of the position input.
+There is however a problem with this approach.
+
+The input from the microphone will sometimes give spikes in terms of the amplitude.
+The reason for these spikes has yet to be determined.
+The effect however is quite clear.
+The car \textit{jumps} whenever such a spike is recorded, rendering it difficult for the user to map the voice level to the cars position.
+
+To resolve this problem, various methods for \textit{moving} the car were attempted.
+In the following sections these methods will be discussed.
+
+\subsection{Linear motion}
+
+\subsection{Averaging the position}
+
+\subsection{Acceleration and deceleration}
