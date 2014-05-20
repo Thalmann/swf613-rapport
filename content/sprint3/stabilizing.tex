@@ -10,7 +10,8 @@ Given a vertical position where the car \textit{should} be placed, the car could
 This is the simplest solution as it requires no additional translation of the position input.
 There is however a problem with this approach.
 
-The input from the microphone will sometimes give spikes in terms of the amplitude.
+The input from the microphone will sometimes give spikes in terms of the amplitude.\footnote{In this context \textit{spikes} refers to any deviation in the measured amplitude.
+This includes any white noise recorded by the microphone.}
 The reason for these spikes has yet to be determined.
 The effect however is quite clear.
 The car \textit{jumps} whenever such a spike is recorded, rendering it difficult for the user to map the voice level to the cars position.
@@ -19,6 +20,14 @@ To resolve this problem, various methods for \textit{moving} the car were attemp
 In the following sections these methods will be discussed.
 
 \subsection{Linear motion}
+Instead of moving the car directly to its target location, it could be moved there \textit{over time}.
+This naturally introduces a concept of speed, as to define how much time is required to move the car.
+By determining the cars speed in terms of pixels per second, the car no longer performs vertical leaps and will steadily move towards its current target.
+
+The aforementioned spikes in volume are still present, as the same input is used.
+This means that while the car is moving downwards it might move upwards for a few frames before continuing its ''correct'' motion.
+The result is a car that jitters while it moves.
+It is clear that while this fixes the issue of the car jumping from one position to another, there is still no clear mapping between the cars motion and the voice input.
 
 \subsection{Averaging the position}
 
