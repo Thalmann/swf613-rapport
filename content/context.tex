@@ -1,53 +1,101 @@
-%intro
+\section{GIRAF}
 
-\section{The Multi-project}
+\textit{Graphical Interface Resources for Autistic Folk} (GIRAF) is a semester-wide multi-project collaboration between all Software 6th semester (SW6) groups at Aalborg University.
+The project started with the SW6 students of 2011 and has run every year since then (this being the 4th year).
 
-\subsection{GIRAF}
-\textit{Graphical Interface Resources for Autistic Folk} (GIRAF) is a semester-wide multi-project collaboration between all Software 6th semester (SW6) groups.
-The project started with the SW6 students of 2011 and has run every year since then, this being the 4th year.
+The overall idea of the project is to create a multi-purpose Android application, which can be used to ease the lives of citizens and their institutional guardians.
+The main goal is to recreate already existing physical tools/methods in digitalized versions.
+Additionally, in order to make it an all-use-and-purposes application, it will also serve as an administration tool for each individual institution that will put it to use.
 
-The overall idea of the project is to create a multi-purpose Android application, which can be used to ease the lives of citizens and institutional guardians.
-The main goal is to recreate already existing physical tools in digitalized versions.
-Additionally, in order to make it an all-use-and-purposes application it should also serve as an administration tool to each individual institution that will put it to use.
-
-\subsubsection{Collaboration with Aalborg Municipality}
-GIRAF is a collaboration project with Aalborg Municipality.
+GIRAF is run in collaboration with Aalborg Municipality.
 This year there is a total of 6 stakeholders (all institutional guardians or otherwise linked to institutions) who will be available during the course of the project.
 
-\subsection{Stemmespillet (Cars)}
-Throughout the entire course of this project, the project-group has worked with an application called Stemmespillet (Translates to 'The Voice Game' and was previously called 'Cars').
-Stemmespillet is a sub-application of the GIRAF-application, with its own purpose, that of assisting citizens in learning to control their pitch of speech.
-
-\subsubsection{Collaboration with stakeholders}
-In order to establish its overall purpose and to make it as useful as possible, there were three main stakeholders that were cooperated with during the project.
-Two are institutional guardians at 'Birken', a home for psychologically disabled children and the third is a speech therapist, associated with Aalborg Municipality.
-These stakeholders were the ones with the most to gain from this sub-application, based on the citizens they worked with on a daily basis.
-These were also the stakeholders with the most input, both during interviews and sprint reviews.
-
-\subsubsection{Collaboration with multi-project}
-Stemmespillet is a sub-application of the GIRAF-application and therefore needed to follow certain project-standards.
-For Stemmespillet there were two overall standards; shared data and shared GUI.
-The shared data was for two purposes; re-acquiring saved data in case of replacement of the tablet and for multi-user tablets.
-Following GUI standards was to give the application as a whole the same look and feel.
-
 \section{Organization}
+The multi-project consists of 60 people split into 16 project-groups, each group consisting of 4 people (except for two groups, that was the split of a former 4-man group).
 
 \subsection{Method}
+Due to the high level of collaboration and the focus on getting out a usable and working product, an agile methodology was in mind when planning the process.
+Each project-group would work as a team, with their own day-to-day activities, focusing on their current project during the sprint.
+Then there would be common weekly status meetings during the sprints, each sprint concluded with sprint-review and sprint-planning meetings.
 
 \subsubsection{Sprints}
+The semester was split into 4 sprints, with the last three sprints being of same length (The first was a bit shorter, as this was meant as a sprint solely for getting to know the former projects).
+In order to take into consideration the courses that were running simultaneously with the multi-project, sprint lengths were based on available hours (with the subtraction of course hours).
+
+At the end of each sprint, a sprint review meeting would be held, where all stakeholders were invited.
+Here the current product (if possible) would be presented by each group and critiqued by stakeholders and the other groups.
+Also, the product backlog would be presented for the stakeholders, in order to get some input on what to focus on in the following sprint.
+
+Following the sprint review, and without the stakeholders, the next sprint would be planned.
+Here groups had a chance to switch focus, if their current project was finished, or if something more important had presented itself as a result of the sprint review.
 
 \subsubsection{Meetings}
+In order to stay on top of potential problems, a status meeting was held every week (with exception of sprint-end weeks).
+The meetings started out with a status report, where a representative from each group presented what they were currently working with, along with any potential problems that needed attention.
+
+If there were problems, these were noted and the proper people informed, so that they could discuss these, without everyone needing to be part of the discussion.
+This saved a lot of time, as opposed to having everyone discussing every problem.
+
+However, subjects that did need to be discussed with all groups present would be added to the meeting agenda and then discussed at the meeting.
 
 \subsubsection{Specialists}
+In order for people to concentrate on their respective projects, a few people were named specialists in different areas (such as server, contact with stakeholders, and version control).
+Each person were responsible for their area; that it was working as it should, as well as helping people with possible problems.
 
 \subsection{Stakeholders}
+Day-to-day contact with stakeholders went through a specialist (contact person).
+As mentioned, all stakeholders were invited to each sprint review, where they would give feedback to the presented work as well as available for questions.
+If any more contact was needed, such as arranging a meeting, this was conveyed by the contact person.
 
 \subsection{Shared Components}
+There were two main shared components; database and GUI components.
+
+The database consisted of the storage of shared data, as well as providing an interface for accessing this data.
+
+The GUI components consisted of shared graphical components, such as backgrounds, buttons and other things that were commonly used and needed to look the same across applications.
+
+As an addition to the shared components, whenever needed, groups would collaborate on minor shared components that could be used across applications.
 
 \subsection{Tools}
+\mikael{Introduction for 'Tools'}
 
 \subsubsection{Redmine}
+Redmine was used as a center of information, consisting of three main uses; forums, wiki-pages, and issue-trackers.
+
+The forums were used for non-pressing matters.
+Here, updates to shared components were posted, along with possible instructions if changes needed to be applied to concerned projects.
+
+Wiki-pages were used for static information.
+There was a main wiki-page, containing group contact informations, general guides, and meeting summaries.
+Additionally, each sub-project had the possibility for its own wiki-page, to contain whatever information about their project that needed to be shared with others.
+
+Issue-tracking was a tool for tracking progress of a project, as well as the possibility to state issues for other projects that ones own project needed done.
 
 \subsubsection{Git}
+Git was used as version control.
+Since one of the group members was the Git-specialist, this is the focus of one of the collaboration chapters (see \ref{collaboration:git}).
+\mikael{Don't know what more to write here if anything.}
 
 \subsubsection{Jenkins}
+\mikael{Don't know what to exactly write here}.
+
+\section{Stemmespillet (Cars)}
+Throughout the entire course of this project, the project-group has worked with an application called Stemmespillet (Translates to 'The Voice Game' and was previously called 'Cars').
+Stemmespillet is a sub-application of the GIRAF-application, with its own purpose; that of assisting citizens in learning to control their pitch of speech.
+
+\subsection{Collaboration with stakeholders}
+In order to establish its overall purpose and to make it as useful as possible, there were three main stakeholders that were cooperated with during the project.
+Two are institutional guardians at 'Birken', a home for psychologically disabled children, and the third is a speech therapist, associated with Aalborg Municipality.
+These stakeholders were the ones with the most to gain from this sub-application, based on the citizens they worked with on a daily basis.
+These were also the stakeholders with the most relevant input, both during interviews and sprint reviews.
+
+\subsection{Collaboration with multi-project}
+Stemmespillet is a sub-application of the GIRAF-application and therefore needed to follow certain project-standards.
+For Stemmespillet there were two overall standards; shared data and shared GUI.
+
+The shared data was for two purposes; re-acquiring saved data in case of replacement of the tablet, and for multi-user tablets.
+Following GUI standards was to give the application as a whole the same look and feel.
+
+The project group also had two specialists; Git and Redmine Wiki.
+The first one took up a lot of time for the concerned person, which also led to the collaboration chapter on the subject of Git.
+The latter did not take up a lot of time.
