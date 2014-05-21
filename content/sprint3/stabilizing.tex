@@ -2,16 +2,22 @@
 \mikkel{Jeg ved ikke hvor det her skal placeres...}
 The cars' vertical motion is determined by voice input.
 Using the volume recorded by the microphone, a value in the interval $[0-1]$ is calculated, where 0 represents silence and 1 represents \textit{maximum} volume.
-This value is then mapped linearly to a vertical position in the game.
+The value is then mapped linearly to a vertical position in the game.
 After this calculation is completed and a final value is determined, the car must be moved.
 
 \paragraph{Positioning the car}
 Given a vertical position where the car \textit{should} be placed, the car could simple be moved to its destination on each frame update.
 This is the simplest solution as it requires no additional translation of the position input.
-There is however a problem with this approach.
+Let $m_f \in [0 \dots 1]$ represent the translated measurement at frame $f$ and $c_f \in [0 \dots 1]$ represent the position of the car at frame $f$.
 
-The input from the microphone will sometimes give spikes in terms of the amplitude.\footnote{In this context \textit{spikes} refers to any deviation in the measured amplitude.
-This includes any white noise recorded by the microphone.}
+\begin{center}
+We then have that $c_f = m_f$.
+\end{center}
+
+There is however a problem with this approach.
+The input from the microphone will sometimes yield spikes\footnote{
+In this context \textit{spikes} refers to any deviation in the measured amplitude.
+This includes any white noise recorded by the microphone.} in terms of the amplitude.
 The reason for these spikes has yet to be determined.
 The effect however is quite clear.
 The car \textit{jumps} whenever such a spike is recorded, rendering it difficult for the user to map the voice level to the cars position.
@@ -22,12 +28,21 @@ In the following sections these methods will be discussed.
 \subsection{Linear motion}
 Instead of moving the car directly to its target location, it could be moved there \textit{over time}.
 This naturally introduces a concept of speed, as to define how much time is required to move the car.
-By determining the cars speed in terms of pixels per second, the car no longer performs vertical leaps and will steadily move towards its current target.
+Let $s$ denote the vertical speed of the car and $t_f$ the time at frame $f$.
+We then introduce the variable $\lambda_f = t_f - t_{f-1}$, representing the time difference between two frames.
+With this, the position of the car can be represented as: $$c_f = \left\{ 
+  \begin{array}{l l}
+    c_{f-1} + s \cdot \lambda_f & \quad \text{if $c_{f-1} < m_f$}\\
+    c_{f-1} - s \cdot \lambda_f & \quad \text{otherwise}
+  \end{array} \right.$$
+
+Using this approach the car no longer performs vertical leaps and will steadily move towards its current target.
 
 The aforementioned spikes in volume are still present, as the same input is used.
 This means that while the car is moving downwards it might move upwards for a few frames before continuing its ''correct'' motion.
 The result is a car that jitters while it moves.
-It is clear that while this fixes the issue of the car jumping from one position to another, there is still no clear mapping between the cars motion and the voice input.
+
+It is clear that while this approach fixes the issue of the car jumping from one position to another, there is still no clear mapping between the cars motion and the voice input.
 
 \subsection{Averaging the position}
 
