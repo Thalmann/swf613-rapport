@@ -25,7 +25,7 @@ The car \textit{jumps} whenever such a spike is recorded, rendering it difficult
 To resolve this problem, various methods for \textit{moving} the car were attempted.
 In the following sections these methods will be discussed.
 
-\subsection{Linear motion}
+\subsection{Linear motion}\label{stability:linear}
 Instead of moving the car directly to its target location, it could be moved there \textit{over time}.
 This naturally introduces a concept of speed, as to define how much time is required to move the car.
 Let $s$ denote the vertical speed of the car and $t_f$ the time at frame $f$.
@@ -44,6 +44,22 @@ The result is a car that jitters while it moves.
 
 It is clear that while this approach fixes the issue of the car jumping from one position to another, there is still no clear mapping between the cars motion and the voice input.
 
-\subsection{Averaging the position}
+\subsection{Averaging the measurements}
+To reduce the effect of the spikes the average of the last $x$ measurements could be used instead of the actual measurements.
+This would greatly reduce the jitter described above, as a single ''up'' measurement is outweighed by $x-1$ ''down'' measurements (assuming the deviations are similar).
+Naturally we would still like the benefits of the linear motion (section \ref{stability:linear}) to keep the car from \textit{''jumping''}.
+Let $m^{'}_{f}$ denote the average of the last $x$ measurements:
+$$m^{'}_{f} = \frac{m_f + m_{f-1} + \dots + m_{f-x+2} + m_{f-x+1}}{x}$$
+We can now define the cars position using this average:
+$$c_f = \left\{ 
+  \begin{array}{l l}
+    c_{f-1} + s \cdot \lambda_f & \quad \text{if $c_{f-1} < m^{'}_{f}$}\\
+    c_{f-1} - s \cdot \lambda_f & \quad \text{otherwise}
+  \end{array} \right.$$
+
+This method handles the spikes better than the strictly linear method.
+For larger spikes a bigger value of $x$ is required to compensate.
+The result of this is a significant delay in the effect of raising the volume of ones voice.
 
 \subsection{Acceleration and deceleration}
+
