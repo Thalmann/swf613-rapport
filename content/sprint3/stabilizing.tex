@@ -44,7 +44,7 @@ The result is a car that jitters while it moves.
 
 It is clear that while this approach fixes the issue of the car jumping from one position to another, there is still no clear mapping between the cars motion and the voice input.
 
-\subsection{Averaging the measurements}
+\subsection{Averaging the measurements}\label{stability:average}
 To reduce the effect of the spikes the average of the last $x$ measurements could be used instead of the actual measurements.
 This would greatly reduce the jitter described above, as a single ''up'' measurement is outweighed by $x-1$ ''down'' measurements (assuming the deviations are similar).
 Naturally we would still like the benefits of the linear motion (section \ref{stability:linear}) to keep the car from \textit{''jumping''}.
@@ -61,5 +61,4 @@ This method handles the spikes better than the strictly linear method.
 For larger spikes a bigger value of $x$ is required to compensate.
 The result of this is a significant delay in the effect of raising the volume of ones voice.
 
-\subsection{Acceleration and deceleration}
-
+\subsection{Acceleration and deceleration}\label{stability:acceleration}
