@@ -70,4 +70,9 @@ Meanwhile the delay associated with averaging the measurements (section \ref{sta
 Using this method for moving the car can be defined as below:
 $$c_f = c_{f-1} + s_f \cdot \lambda_x$$
 Where $s_f$ refers to the cars vertical speed at frame $f$.
-We are then left to define $s_f$ in a way that involves acceleration and deceleration.
+We are then left to define $s_f$ in a way that involves acceleration and deceleration using $s_{f-1}$ and $\lambda_x$ as the only variables.
+For this purpose a function $speed$ is introduced, yielding the following equation:
+$$c_f = c_{f-1} + \text{speed}(s_{f-1}, \lambda_x) \cdot \lambda_x$$\mikkel{Skal vi inkludere den egentlige funktion der definerer accelerationen? Jeg har det muligvis liggende i noget gammelt backup :P}
+We will not explore the actual function that defines the acceleration of the car in the context of the cars vertical motion as it is the methodology of how the car is moved that is of interest.
+Allowing the car to accelerate solves the problem caused by spikes in the voice input and gives direct feedback for the user.
+Thusly this is the chosen solution to control the car.
