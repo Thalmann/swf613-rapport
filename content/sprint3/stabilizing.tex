@@ -1,8 +1,78 @@
 \section{Stabilizing the car}
-\mikkel{Jeg ved ikke hvor det her skal placeres - og der mangler nok referencer til nogle andre afsnit...}
+\mikkel{Jeg ved ikke hvor det her skal placeres...}
 The cars' vertical motion is determined by voice input.
 Using the volume recorded by the microphone, a value in the interval $[0-1]$ is calculated, where 0 represents silence and 1 represents \textit{maximum} volume.
-This value is then mapped linearly to a vertical position in the game.
+The value is then mapped linearly to a vertical position in the game.
 After this calculation is completed and a final value is determined, the car must be moved.
-In the following sections several methods for moving the car will be discussed.
-The aforementioned processing of voice input will not be explained further, due to its relatively simple mathematical principles.
+
+\paragraph{Positioning the car}
+Given a vertical position where the car \textit{should} be placed, the car could simple be moved to its destination on each frame update.
+This is the simplest solution as it requires no additional translation of the position input.
+Let $m_f \in [0 \dots 1]$ represent the translated measurement at frame $f$ and $c_f \in [0 \dots 1]$ represent the position of the car at frame $f$.
+
+\begin{center}
+We then have that $c_f = m_f$.
+\end{center}
+
+There is however a problem with this approach.
+The input from the microphone will sometimes yield spikes\footnote{
+In this context \textit{spikes} refers to any deviation in the measured amplitude.
+This includes any white noise recorded by the microphone.} in terms of the amplitude.
+The reason for these spikes has yet to be determined.
+The effect however is quite clear.
+The car \textit{jumps} whenever such a spike is recorded, rendering it difficult for the user to map the voice level to the cars position.
+
+To resolve this problem, various methods for \textit{moving} the car were attempted.
+In the following sections these methods will be discussed.
+
+\subsection{Linear motion}\label{stability:linear}
+Instead of moving the car directly to its target location, it could be moved there \textit{over time}.
+This naturally introduces a concept of speed, as to define how much time is required to move the car.
+Let $s$ denote the vertical speed of the car and $t_f$ the time at frame $f$.
+We then introduce the variable $\lambda_f = t_f - t_{f-1}$, representing the time difference between two frames.
+With this, the position of the car can be represented as: $$c_f = \left\{ 
+  \begin{array}{l l}
+    c_{f-1} + s \cdot \lambda_f & \quad \text{if $c_{f-1} < m_f$}\\
+    c_{f-1} - s \cdot \lambda_f & \quad \text{otherwise}
+  \end{array} \right.$$
+
+Using this approach the car no longer performs vertical leaps and will steadily move towards its current target.
+
+The aforementioned spikes in volume are still present, as the same input is used.
+This means that while the car is moving downwards it might move upwards for a few frames before continuing its ''correct'' motion.
+The result is a car that jitters while it moves.
+
+It is clear that while this approach fixes the issue of the car jumping from one position to another, there is still no clear mapping between the cars motion and the voice input.
+
+\subsection{Averaging the measurements}\label{stability:average}
+To reduce the effect of the spikes the average of the last $x$ measurements could be used instead of the actual measurements.
+This would greatly reduce the jitter described above, as a single ''up'' measurement is outweighed by $x-1$ ''down'' measurements (assuming the deviations are similar).
+Naturally we would still like the benefits of the linear motion (section \ref{stability:linear}) to keep the car from \textit{''jumping''}.
+Let $m^{'}_{f}$ denote the average of the last $x$ measurements:
+$$m^{'}_{f} = \frac{m_f + m_{f-1} + \dots + m_{f-x+2} + m_{f-x+1}}{x}$$
+We can now define the cars position using this average:
+$$c_f = \left\{ 
+  \begin{array}{l l}
+    c_{f-1} + s \cdot \lambda_f & \quad \text{if $c_{f-1} < m^{'}_{f}$}\\
+    c_{f-1} - s \cdot \lambda_f & \quad \text{otherwise}
+  \end{array} \right.$$
+
+This method handles the spikes better than the strictly linear method.
+For larger spikes a bigger value of $x$ is required to compensate.
+The result of this is a significant delay in the effect of raising the volume of ones voice.
+
+\subsection{Acceleration and deceleration}\label{stability:acceleration}
+Another approach to managing the cars position is by having the car accelerate and decelerate when moving vertically.
+Spikes in volume would then be met with a deceleration in speed.
+But as they are often quite short-lived the car would quickly accelerate again.
+Thus the spikes problem is solvable using this methodology.
+Meanwhile the delay associated with averaging the measurements (section \ref{stability:average}) does not occur as the car always accelerates or decelerates depending on the actual input.
+Using this method for moving the car can be defined as below:
+$$c_f = c_{f-1} + s_f \cdot \lambda_x$$
+Where $s_f$ refers to the cars vertical speed at frame $f$.
+We are then left to define $s_f$ in a way that involves acceleration and deceleration using $s_{f-1}$ and $\lambda_x$ as the only variables.
+For this purpose a function $speed$ is introduced, yielding the following equation:
+$$c_f = c_{f-1} + \text{speed}(s_{f-1}, \lambda_x) \cdot \lambda_x$$\mikkel{Skal vi inkludere den egentlige funktion der definerer accelerationen? Jeg har det muligvis liggende i noget gammelt backup :P}
+We will not explore the actual function that defines the acceleration of the car in the context of the cars vertical motion as it is the methodology of how the car is moved that is of interest.
+Allowing the car to accelerate solves the problem caused by spikes in the voice input and gives direct feedback for the user.
+Thusly this is the chosen solution to control the car.
