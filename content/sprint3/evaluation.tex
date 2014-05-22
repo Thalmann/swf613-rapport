@@ -1,6 +1,6 @@
 \section{Evaluation}
 This section contains an overview of the requirements and whether they have been fulfilled during this sprint.
-Comparing \cref{sprint2:requirement_table_1} and \cref{sprint2:requirement_table_2} it is possible to see the progress and what has been solved during sprint 2 compared to sprint 1.
+Comparing \cref{sprint2:requirement_table_2} and \cref{sprint3:requirement_table} it is possible to see the progress and what has been solved during sprint 3 compared to sprint 2.
 Each requirement, if fulfilled, has a link to where it is explained.
 \begin{tabularenumerate}
 \begin{longtable}{c|l|c|c}
@@ -9,37 +9,45 @@ Each requirement, if fulfilled, has a link to where it is explained.
 \tabenum & \begin{tabular}[l]{@{}l@{}}The game must not be a side-scrolling game,\\because the citizen must be able to see the goal\end{tabular}
  & $\surd$ & \cref{sprint1:req1} \\
 \hline
-\tabenum \label{sprint2:tab2:req2} & \begin{tabular}[l]{@{}l@{}}The car is controlled in such a way,\\that the vertical position of the car is relative\\ to the current loudness of the player's voice.\end{tabular}& $\surd$ & \cref{sprint2:car_control} \\
+\tabenum \label{sprint3:tab2:req2} & \begin{tabular}[l]{@{}l@{}}The car is controlled in such a way,\\that the vertical position of the car is relative\\ to the current loudness of the player's voice.\end{tabular}& $\surd$ & \cref{sprint2:car_control} \\
 \hline
 \tabenum & The goal of the game is to reach a garage & $\surd$ & \cref{sprint1:req4} \\
 \hline
-\tabenum \label{sprint2:tab2:req4} & When the game is won an reward should be given & $\surd$ & \cref{sprint2:won} \\
+\tabenum \label{sprint3:tab2:req4} & When the game is won an reward should be given & $\surd$ & \cref{sprint2:won} \\
 \hline
-\tabenum \label{sprint2_database_req} & \begin{tabular}[l]{@{}l@{}}It must be possible\\to save and load settings for a specific profile\end{tabular} & $\times$ & - \\
+\tabenum \label{sprint3_database_req} & \begin{tabular}[l]{@{}l@{}}It must be possible\\to save and load settings for a specific profile\end{tabular} & $\surd$ & \cref{sprint3:database} \\
 \hline
-\tabenum \label{sprint2:req:calibrate} & It must be possible to calibrate the microphone & $\times$ & - \\
+\tabenum \label{sprint3:req:calibrate} & It must be possible to calibrate the microphone & $\surd$ & \cref{sprint3:control_car} \\
 \hline
-\tabenum \label{sprint2:tab2:req7} & \begin{tabular}[l]{@{}l@{}}There is a digit between 0 and 10\\ displayed on the car as well as obstacles,\\ representing the loudness level,\\ based on its vertical position.\end{tabular} & $\surd$ & \cref{sprint2:gauges} \\
+\tabenum \label{sprint3:tab2:req7} & \begin{tabular}[l]{@{}l@{}}There is a digit between 0 and 10\\ displayed on the car as well as obstacles,\\ representing the loudness level,\\ based on its vertical position.\end{tabular} & $\surd$ & \cref{sprint2:gauges} \\
 \hline
-\tabenum \label{sprint2:req:picto_gauge} & \begin{tabular}[l]{@{}l@{}}Besides the scales from 0 to 10,\\ both speed and loudness have pictograms\\ illustrating some of the values on these scales.\end{tabular} & $\times$ & - \\
+\tabenum \label{sprint3:req:picto_gauge} & \begin{tabular}[l]{@{}l@{}}Besides the scales from 0 to 10,\\ both speed and loudness have pictograms\\ illustrating some of the values on these scales.\end{tabular} & $\times$ & - \\
 \hline
-\tabenum \label{sprint2:tab2:req9} & \begin{tabular}[l]{@{}l@{}}It should be possible to pause the game.\\ When the game is paused,\\ a loudness-barometer is displayed next to the car,\\ further visualizing the current loudness.\end{tabular} & $\surd$ & \cref{sprint2:paused} \\
+\tabenum \label{sprint3:tab2:req9} & \begin{tabular}[l]{@{}l@{}}It should be possible to pause the game.\\ When the game is paused,\\ a loudness-barometer is displayed next to the car,\\ further visualizing the current loudness.\end{tabular} & $\surd$ & \cref{sprint2:paused} \\
 \hline
-\tabenum \label{sprint2:req:speed} & \begin{tabular}[l]{@{}l@{}}Speed is alterable. The speed level\\ is represented as a digit between 0 and 10.\end{tabular} & $\times$ & - \\
+\tabenum \label{sprint3:req:speed} & \begin{tabular}[l]{@{}l@{}}Speed is alterable. The speed level\\ is represented as a digit between 0 and 10.\end{tabular} & $\surd$ & \cref{sprint3:settings} \\
 \hline
-\tabenum \label{sprint2:tab2:req11} & \begin{tabular}[l]{@{}l@{}}The placement and number of obstacles\\ is alterable.\end{tabular} & $\surd$ & \cref{sprint2:map_editor} \\
+\tabenum \label{sprint3:tab2:req11} & \begin{tabular}[l]{@{}l@{}}The placement and number of obstacles\\ is alterable.\end{tabular} & $\surd$ & \cref{sprint2:map_editor} \\
 \hline
-\tabenum \label{sprint2:tab2:req12} & \begin{tabular}[l]{@{}l@{}}The placement of obstacles should be\\ in such a way,\\ that it is possible to adapt it to both citizen\\ with tendency to speaking too loud\\ as well as those speaking too low.\end{tabular} & $\surd$ & \cref{sprint2:map_editor} \\
+\tabenum \label{sprint3:tab2:req12} & \begin{tabular}[l]{@{}l@{}}The placement of obstacles should be\\ in such a way,\\ that it is possible to adapt it to both citizen\\ with tendency to speaking too loud\\ as well as those speaking too low.\end{tabular} & $\surd$ & \cref{sprint2:map_editor} \\
 \hline
-\tabenum \label{sprint2:tab2:req13} & \begin{tabular}[l]{@{}l@{}}The graphics need to be simple,\\ as some citizens have a low attention span\\ and are easily distracted.\end{tabular} & $\surd$ & \cref{sprint2:graphics} \\
+\tabenum \label{sprint3:tab2:req13} & \begin{tabular}[l]{@{}l@{}}The graphics need to be simple,\\ as some citizens have a low attention span\\ and are easily distracted.\end{tabular} & $\surd$ & \cref{sprint2:graphics} \\
 \hline
-\tabenum \label{sprint2:req:pickup_avoid} & \begin{tabular}[l]{@{}l@{}}It should be possible, in settings, to switch\\ between avoiding objects and picking objects up.\end{tabular} & $\times$ & - \\
+\tabenum \label{sprint3:req:pickup_avoid} & \begin{tabular}[l]{@{}l@{}}It should be possible, in settings, to switch\\ between avoiding objects and picking objects up.\end{tabular} & $\times$ & - \\
 \hline
 \tabenum & \begin{tabular}[l]{@{}l@{}}When picking objects up, this is\\ linked to pictogram categories.\end{tabular} & $\times$ & - \\
 \hline
 \tabenum & \begin{tabular}[l]{@{}l@{}}It is important that the pickup/category\\ ''mode'' is optional, due to different capabilities\\ for each citizen.\end{tabular} & $\times$ & - \\
 \hline
 \caption{Requirements fulfilled after sprint 1.}
-\label{sprint2:requirement_table_2}
+\label{sprint3:requirement_table}
 \end{longtable}
 \end{tabularenumerate}
+
+\subsection{Control of the car}\label{sprint3:control_car}
+It was mentioned in \cref{sprint2:eval:control_car} that the control of the car did not work properly with the current calibration.
+This is regarding \cref{sprint3:req:calibrate}.
+So first the calibration process was examined but no problems were found.
+Then the control of the car was examined and a solution was found.
+The solution to this problem was to improve the control of the car described in \cref{sprint3:stabil_car}.
+So this indirect solved \cref{sprint3:req:calibrate}.
