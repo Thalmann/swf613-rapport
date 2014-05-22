@@ -72,16 +72,16 @@ This ensures that the sound is only played once, and that is can first be played
 An example of the usage of the \lstinline|Sound| class can be seen on \cref{playsound}
 
 \begin{lstlisting}[caption=Playing a sound, label=playsound]
-	if (visualCounter == 2) 
-	{
-		Assets.GetCarStart().Play();
-	}
+if (visualCounter == 2) 
+{
+	Assets.GetCarStart().Play();
+}
 
-	if (isTimerDone(deltaTime)) 
-	{
-		Assets.GetCarStart().Reset();
-		showRunningScreen();
-	}
+if (isTimerDone(deltaTime)) 
+{
+	Assets.GetCarStart().Reset();
+	showRunningScreen();
+}
 \end{lstlisting}
 
 \paragraph{Handling touch events}
