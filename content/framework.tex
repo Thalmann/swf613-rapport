@@ -11,3 +11,100 @@ This repository can be a base for the development of future games in the giraf p
 In this chapter the usage of the framework will be described in order to make it easier for the students from next semester to create games in it.
 
 \subsection{Using the framework}
+The game framework is built around using screens to encapsulate different game contexts. 
+This encapsulation makes it very easy to keep an overview over the game even if there are a lot of screens.
+
+The following examples of usage explains the usage of the framework from the way it has been used in the cars project.
+
+\paragraph{The GameActivity}
+The game is contained in an activity which holds the logic for displaying screens.
+In Cars a \lstinline|CarGame| class was created a class  that extends the \lstinline|GameActivity| from the framework. 
+This class keeps a reference to all screens that can be used in the game, and exposes a method for each screen making it possible to set the active screen to the particular screen.
+This uses the \lstinline|setScreen(Screen screen)| method from the \lstinline|GameActivity| superclass. 
+
+The method \lstinline|getInitScreen()| is overridden in order to tell the activity which screen to show as the initial screen.
+
+\paragraph{Screens}
+An overall screen \lstinline|GameScreen| was created to contain logic that is common for all screens.
+This class also holds methods that call the \lstinline|setScreen| methods created in the \lstinline|CarGame| activity.
+This way every screen that inherits from the \lstinline|GameScreen| can change screen when necessary.
+
+The subclasses of this \lstinline|GameScreen| need to override their \lstinline|paint| and \lstinline|update| methods in order to be used in the game
+
+\paragraph{The Graphics Class}
+Drawing on the screen is handled by the \lstinline|Graphics| class in the framework.
+This class exposes methods to draw basic shapes as well as text and images on the canvas. 
+
+\paragraph{Loading assets}
+Graphics and sounds need to be loaded before they can be displayed in the game. 
+This was done in a static \lstinline|Assets| class with a static method loading all assets.
+An excerpt of this method can be seen on \cref{loadassets}
+
+\begin{lstlisting}[caption=The LoadAssets method, label=loadassets]
+public static void LoadAssets(Graphics graphics, Audio audio) 
+{
+	if (loaded)
+		return;
+
+	grass = graphics.newImage("grass.jpg", Graphics.ImageFormat.RGB565);
+	
+	carStart = audio.createSound(R.raw.car_start);
+	
+	loaded = true;
+}
+\end{lstlisting}
+
+This method has to be run before showing the first screen.
+
+\paragraph{Playing sounds}
+The framework contains a class used for playing sounds in the game. 
+This class contains the methods \lstinline|Play|, \lstinline|Reset| and \lstinline|PlayAndReset|.
+The sound class contains a boolean value representing if it has been played or not. 
+This value is set to true every time \lstinline|Play| is run and set to false every time \lstinline|Reset| is run.
+This ensures that the sound is only played once, and that is can first be played again when needed.
+An example of the usage of the \lstinline|Sound| class can be seen on \cref{playsound}
+
+\begin{lstlisting}[caption=Playing a sound, label=playsound]
+	if (visualCounter == 2) 
+	{
+		Assets.GetCarStart().Play();
+	}
+
+	if (isTimerDone(deltaTime)) 
+	{
+		Assets.GetCarStart().Reset();
+		showRunningScreen();
+	}
+\end{lstlisting}
+
+\paragraph{Handling touch events}
+In order to handle input on the screen the framework contains a \lstinline|SingleTouchHandler| class.
+This class handles input events and sends them to the update method of the screen as an array of \lstinline|InputEvent|.
+An example of using these events can be seen on \cref{inputbutton} where the update method of a button is shown. 
+The method checks every touch event since the last update and sets the appropriate variables if the button is either pressed or held down.
+
+\begin{lstlisting}[caption=Implementation of an ingame button, label=inputbutton]
+public void Update(Input.TouchEvent[] touchEvents, float deltaTime) 
+{
+boolean clickedset = false;
+for (int i = 0; i < touchEvents.length; i++) {
+	Input.TouchEvent event = touchEvents[i];
+	if (inBounds(event)) {
+		if (event.type == Input.TouchEvent.TOUCH_UP) {
+			clickedset = true;
+			clicked = pressed;
+			pressed = false;
+	}
+	else if (event.type == Input.TouchEvent.TOUCH_DOWN || event.type == Input.TouchEvent.TOUCH_DRAGGED)
+		pressed = true;
+	else
+		pressed = false;
+	} 
+	else
+		pressed = false;
+	}
+	if (!clickedset)
+		clicked = false;
+}
+\end{lstlisting}
+
