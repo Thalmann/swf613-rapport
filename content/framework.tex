@@ -1,4 +1,3 @@
-\section{Common Game Framework}
 The cars project has been built on an existing framework as mentioned shortly in \cref{s1_redesign}. 
 This made the creation of the game easier because the basic problems of game development on the android platform was already taken care of.
 It was therefore relatively painless to get to the actual design of the game. 
@@ -10,13 +9,13 @@ This repository can be a base for the development of future games in the giraf p
 
 In this chapter the usage of the framework will be described in order to make it easier for the students from next semester to create games in it.
 
-\subsection{Using the framework}
+\section{Using the framework}
 The game framework is built around using screens to encapsulate different game contexts. 
 This encapsulation makes it very easy to keep an overview over the game even if there are a lot of screens.
 
 The following examples of usage explains the usage of the framework from the way it has been used in the cars project.
 
-\paragraph{The GameActivity}
+\subsection{The GameActivity}
 The game is contained in an activity which holds the logic for displaying screens.
 In Cars a \lstinline|CarGame| class was created a class  that extends the \lstinline|GameActivity| from the framework. 
 This class keeps a reference to all screens that can be used in the game, and exposes a method for each screen making it possible to set the active screen to the particular screen.
@@ -24,7 +23,7 @@ This uses the \lstinline|setScreen(Screen screen)| method from the \lstinline|Ga
 
 The method \lstinline|getInitScreen()| is overridden in order to tell the activity which screen to show as the initial screen.
 
-\paragraph{Screens}
+\subsection{Screens}
 An overall screen \lstinline|GameScreen| was created to contain logic that is common for all screens.
 This class also holds methods that call the \lstinline|setScreen| methods created in the \lstinline|CarGame| activity.
 This way every screen that inherits from the \lstinline|GameScreen| can change screen when necessary.
@@ -34,15 +33,15 @@ The subclasses of this \lstinline|GameScreen| need to override their \lstinline|
 Additionally, every object that needs to be updated and/or drawn, needs to implement the \lstinline|Updatable| and \lstinline|Drawable| interfaces.
 This provides the concerned object with an \lstinline|Update| and/or a \lstinline|Draw| method, which needs to be called in the concerned screen for the object to be updated/drawn.
 
-\paragraph{The Graphics Class}
+\subsection{The Graphics Class}
 Drawing on the screen is handled by the \lstinline|Graphics| class in the framework.
 This class exposes methods to draw basic shapes as well as text and images on the canvas. 
 
-\paragraph{The Audio Class}
+\subsection{The Audio Class}
 Music and sounds are handled by the \lstinline|Audio| class.
 It is responsible for loading sound-files into \lstinline|Sound| and \lstinline|Music| classes, where after these can be used to manipulate the audio.
 
-\paragraph{Loading assets}
+\subsection{Loading assets}
 Graphics and sounds need to be loaded before they can be displayed in the game. 
 This was done in a static \lstinline|Assets| class with a static method loading all assets.
 An excerpt of this method can be seen on \cref{loadassets}
@@ -63,7 +62,7 @@ public static void LoadAssets(Graphics graphics, Audio audio)
 
 This method has to be run before showing the first screen.
 
-\paragraph{Playing sounds}
+\subsection{Playing sounds}
 The framework contains a class used for playing sounds in the game. 
 This class contains the methods \lstinline|Play|, \lstinline|Reset| and \lstinline|PlayAndReset|.
 The sound class contains a boolean value representing if it has been played or not. 
@@ -84,7 +83,7 @@ An example of the usage of the \lstinline|Sound| class can be seen on \cref{play
 	}
 \end{lstlisting}
 
-\paragraph{Handling touch events}
+\subsection{Handling touch events}
 In order to handle input on the screen the framework contains a \lstinline|SingleTouchHandler| class.
 This class handles input events and sends them to the update method of the screen as an array of \lstinline|InputEvent|.
 An example of using these events can be seen on \cref{inputbutton} where the update method of a button is shown. 
@@ -115,7 +114,7 @@ for (int i = 0; i < touchEvents.length; i++) {
 }
 \end{lstlisting}
 
-\paragraph{Deltatime}
+\subsection{Deltatime}
 Screens are also provided a deltatime, which is based on the current system time in nano-seconds.
 This makes it possible to determine how much time has gone by between frame-updates (in case this is not always the same).
 It can also be used to time events, such as a countdown-timer.
