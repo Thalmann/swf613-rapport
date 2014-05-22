@@ -10,41 +10,42 @@ This repository can be a base for the development of future games in the giraf p
 In this chapter the usage of the framework will be described in order to make it easier for the students from next semester to create games in it.
 
 \section{Using the framework}
-The game framework is built around using screens to encapsulate different game contexts. 
-This encapsulation makes it very easy to keep an overview over the game even if there are a lot of screens.
-
-The following examples of usage explains the usage of the framework from the way it has been used in the cars project.
+The game framework is built around using screens to encapsulate different game-states. 
+This encapsulation makes it very easy to keep an overview over the game even if there are a lot of states.
 
 \subsection{The GameActivity}
-The game is contained in an activity which holds the logic for displaying screens.
-In Cars a \lstinline|CarGame| class was created a class  that extends the \lstinline|GameActivity| from the framework. 
-This class keeps a reference to all screens that can be used in the game, and exposes a method for each screen making it possible to set the active screen to the particular screen.
-This uses the \lstinline|setScreen(Screen screen)| method from the \lstinline|GameActivity| superclass. 
+The game is contained in an Android activity which holds the logic for switching between screens.
+An activity class that extends the \lstinline|GameActivity| class from the framework needs to be created.
+This class will keep a reference to all screens and exposes a method, that makes it possible for any currently active screen to switch to another screen.
+This is done by using the \lstinline|setScreen(Screen screen)| method from the \lstinline|GameActivity| superclass.
 
-The method \lstinline|getInitScreen()| is overridden in order to tell the activity which screen to show as the initial screen.
+The method \lstinline|getInitScreen()| needs to be overridden in order to tell the activity which screen to show as the initial screen.
 
 \subsection{Screens}
-An overall screen \lstinline|GameScreen| was created to contain logic that is common for all screens.
-This class also holds methods that call the \lstinline|setScreen| methods created in the \lstinline|CarGame| activity.
-This way every screen that inherits from the \lstinline|GameScreen| can change screen when necessary.
+All screens need to override their \lstinline|paint| and \lstinline|update| methods, as these methods are continuously called while the screen is active.
+The \lstinline|paint| method carries a reference to the \lstinline|Graphics| object (see the following section).
+The \lstinline|update| method carries a reference to \lstinline|Input.TouchEvent[]| (see \cref{framework:touchevents}).
+Both methods also have a floating number \lstinline|deltaTime| (see \cref{framework:deltatime}).
 
-The subclasses of this \lstinline|GameScreen| need to override their \lstinline|paint| and \lstinline|update| methods in order to be used in the game.
+All screens are created with a reference to the \lstinline|GameActivity| that created it, making available the method \lstinline|setScreen|, which changes the currently active screen.
 
-Additionally, every object that needs to be updated and/or drawn, needs to implement the \lstinline|Updatable| and \lstinline|Drawable| interfaces.
-This provides the concerned object with an \lstinline|Update| and/or a \lstinline|Draw| method, which needs to be called in the concerned screen for the object to be updated/drawn.
+Additionally, every object that needs to be updated, needs to implement the \lstinline|Updatable| interface.
+This provides the concerned object with an \lstinline|Update| method, which needs to be called in the concerned screen's \lstinline|update| method for the object's logic to be updated.
+The same pattern applies to any object that needs to be drawn, but with the \lstinline|Drawable| interface and the screen's \lstinline|paint| method.
 
 \subsection{The Graphics Class}
 Drawing on the screen is handled by the \lstinline|Graphics| class in the framework.
-This class exposes methods to draw basic shapes as well as text and images on the canvas. 
+This class exposes methods to draw basic shapes as well as text and images on the canvas.
+The screens' \lstinline|paint| function carry a reference to the \lstinline|Graphics| object, making available all functions needed for manipulating the canvas.
 
 \subsection{The Audio Class}
 Music and sounds are handled by the \lstinline|Audio| class.
-It is responsible for loading sound-files into \lstinline|Sound| and \lstinline|Music| classes, where after these can be used to manipulate the audio.
+It is responsible for loading sound-files into \lstinline|Sound| and \lstinline|Music| objects, where after these can be used to play the loaded audio.
 
 \subsection{Loading assets}
 Graphics and sounds need to be loaded before they can be displayed in the game. 
-This was done in a static \lstinline|Assets| class with a static method loading all assets.
-An excerpt of this method can be seen on \cref{loadassets}
+As an example, this could be done in a static \lstinline|Assets| class with a static method loading all assets.
+An excerpt of such a method, displaying the loading of an image and the loading of a sound, can be seen in \cref{loadassets}.
 
 \begin{lstlisting}[caption=The LoadAssets method, label=loadassets]
 public static void LoadAssets(Graphics graphics, Audio audio) 
@@ -60,61 +61,19 @@ public static void LoadAssets(Graphics graphics, Audio audio)
 }
 \end{lstlisting}
 
-This method has to be run before showing the first screen.
-
 \subsection{Playing sounds}
 The framework contains a class used for playing sounds in the game. 
 This class contains the methods \lstinline|Play|, \lstinline|Reset| and \lstinline|PlayAndReset|.
 The sound class contains a boolean value representing if it has been played or not. 
 This value is set to true every time \lstinline|Play| is run and set to false every time \lstinline|Reset| is run.
-This ensures that the sound is only played once, and that is can first be played again when needed.
-An example of the usage of the \lstinline|Sound| class can be seen on \cref{playsound}
+This ensures that the sound is only played once, and that it can first be played again when needed.
 
-\begin{lstlisting}[caption=Playing a sound, label=playsound]
-	if (visualCounter == 2) 
-	{
-		Assets.GetCarStart().Play();
-	}
-
-	if (isTimerDone(deltaTime)) 
-	{
-		Assets.GetCarStart().Reset();
-		showRunningScreen();
-	}
-\end{lstlisting}
-
-\subsection{Handling touch events}
+\subsection{Handling touch events}\label{framework:touchevents}
 In order to handle input on the screen the framework contains a \lstinline|SingleTouchHandler| class.
 This class handles input events and sends them to the update method of the screen as an array of \lstinline|InputEvent|.
-An example of using these events can be seen on \cref{inputbutton} where the update method of a button is shown. 
-The method checks every touch event since the last update and sets the appropriate variables if the button is either pressed or held down.
+Each \lstinline|InputEvent| contains $x$ and $y$ coordinates, where the touch occured, along with its type; \lstinline|TOUCH_DOWN, TOUCH_UP, TOUCH_DRAGGED| or \lstinline|TOUCH_HOLD|.
 
-\begin{lstlisting}[caption=Implementation of an ingame button, label=inputbutton]
-public void Update(Input.TouchEvent[] touchEvents, float deltaTime) 
-{
-boolean clickedset = false;
-for (int i = 0; i < touchEvents.length; i++) {
-	Input.TouchEvent event = touchEvents[i];
-	if (inBounds(event)) {
-		if (event.type == Input.TouchEvent.TOUCH_UP) {
-			clickedset = true;
-			clicked = pressed;
-			pressed = false;
-	}
-	else if (event.type == Input.TouchEvent.TOUCH_DOWN || event.type == Input.TouchEvent.TOUCH_DRAGGED)
-		pressed = true;
-	else
-		pressed = false;
-	} 
-	else
-		pressed = false;
-	}
-	if (!clickedset)
-		clicked = false;
-}
-\end{lstlisting}
-
-\subsection{Deltatime}
-Screens are also provided a deltatime, which is based on the current system time in nano-seconds.
+\subsection{Deltatime}\label{framework:deltatime}
+Screens are also provided a floating number \lstinline|deltaTime|, which is based on the current system time in nano-seconds.
 This makes it possible to determine how much time has gone by between frame-updates (in case this is not always the same).
 It can also be used to time events, such as a countdown-timer.
