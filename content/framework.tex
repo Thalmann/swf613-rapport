@@ -29,11 +29,18 @@ An overall screen \lstinline|GameScreen| was created to contain logic that is co
 This class also holds methods that call the \lstinline|setScreen| methods created in the \lstinline|CarGame| activity.
 This way every screen that inherits from the \lstinline|GameScreen| can change screen when necessary.
 
-The subclasses of this \lstinline|GameScreen| need to override their \lstinline|paint| and \lstinline|update| methods in order to be used in the game
+The subclasses of this \lstinline|GameScreen| need to override their \lstinline|paint| and \lstinline|update| methods in order to be used in the game.
+
+Additionally, every object that needs to be updated and/or drawn, needs to implement the \lstinline|Updatable| and \lstinline|Drawable| interfaces.
+This provides the concerned object with an \lstinline|Update| and/or a \lstinline|Draw| method, which needs to be called in the concerned screen for the object to be updated/drawn.
 
 \paragraph{The Graphics Class}
 Drawing on the screen is handled by the \lstinline|Graphics| class in the framework.
 This class exposes methods to draw basic shapes as well as text and images on the canvas. 
+
+\paragraph{The Audio Class}
+Music and sounds are handled by the \lstinline|Audio| class.
+It is responsible for loading sound-files into \lstinline|Sound| and \lstinline|Music| classes, where after these can be used to manipulate the audio.
 
 \paragraph{Loading assets}
 Graphics and sounds need to be loaded before they can be displayed in the game. 
@@ -108,3 +115,7 @@ for (int i = 0; i < touchEvents.length; i++) {
 }
 \end{lstlisting}
 
+\paragraph{Deltatime}
+Screens are also provided a deltatime, which is based on the current system time in nano-seconds.
+This makes it possible to determine how much time has gone by between frame-updates (in case this is not always the same).
+It can also be used to time events, such as a countdown-timer.
