@@ -1,4 +1,3 @@
-\section{Common Game Framework}
 The cars project has been built on an existing framework as mentioned shortly in \cref{s1_redesign}. 
 This made the creation of the game easier because the basic problems of game development on the android platform was already taken care of.
 It was therefore relatively painless to get to the actual design of the game. 
@@ -6,8 +5,62 @@ It was therefore relatively painless to get to the actual design of the game.
 Some project proposals at the beginning of the semester suggested making more games for the citizens.
 It is therefore ideal to create a separate project that contains the framework so others can use it in future projects.
 Our modified version of the framework has been moved to a new repository for this to be possible.
-This repository can be a base for the development of future games in the giraf project.
+This repository can be a base for the development of future games in the GIRAF project.
 
 In this chapter the usage of the framework will be described in order to make it easier for the students from next semester to create games in it.
 
-\subsection{Using the framework}
+\section{Using the framework}
+The game framework is built around using screens to encapsulate different game-states. 
+This encapsulation makes it very easy to keep an overview over the game even if there are a lot of states.
+
+\subsection{The GameActivity}
+The game is contained in an Android activity which holds the logic for switching between screens.
+An activity class that extends the \lstinline|GameActivity| class from the framework needs to be created.
+This class will keep a reference to all screens and exposes a method, that makes it possible for any currently active screen to switch to another screen.
+This is done by using the \lstinline|setScreen(Screen screen)| method from the \lstinline|GameActivity| superclass.
+
+The method \lstinline|getInitScreen()| needs to be overridden in order to tell the activity which screen to show as the initial screen.
+
+\subsection{Screens}
+All screens need to override their \lstinline|paint| and \lstinline|update| methods, as these methods are continuously called while the screen is active.
+The \lstinline|paint| method carries a reference to the \lstinline|Graphics| object (see the following section).
+The \lstinline|update| method carries a reference to \lstinline|Input.TouchEvent[]| (see \cref{framework:touchevents}).
+Both methods also have a floating point number \lstinline|deltaTime| (see \cref{framework:deltatime}).
+
+All screens are created with a reference to the \lstinline|GameActivity| that created it, making available the method \lstinline|setScreen|, which changes the currently active screen.
+
+Additionally, every object that needs to be updated, needs to implement the \lstinline|Updatable| interface.
+This provides the concerned object with an \lstinline|Update| method, which needs to be called in the concerned screen's \lstinline|update| method for the object's logic to be updated.
+The same pattern applies to any object that needs to be drawn, but with the \lstinline|Drawable| interface and the screen's \lstinline|paint| method.
+
+\subsection{The Graphics Class}
+Drawing on the screen is handled by the \lstinline|Graphics| class in the framework.
+This class exposes methods to draw basic shapes, as well as text and images.
+The screen's \lstinline|paint| function carries a reference to the \lstinline|Graphics| object, making available all functions needed for drawing onto a screen.
+
+\subsection{The Audio Class}
+Music and sounds are handled by the \lstinline|Audio| class.
+It is responsible for loading sound-files into \lstinline|Sound| and \lstinline|Music| objects, where after these can be used to play the loaded music/sounds.
+
+\subsection{Loading assets}
+Images and audio need to be loaded before they can be displayed in the game.
+Images are loaded into \lstinline|Image| objects, using \lstinline|Graphic|'s \lstinline|newImage| method.
+Audio is loaded using \lstinline|Audio|'s \lstinline|createMusic| or \lstinline|createSound| methods.
+
+\subsection{Playing sounds}
+The framework contains a class used for playing sounds in the game. 
+This class contains the methods \lstinline|Play|, \lstinline|Reset| and \lstinline|PlayAndReset|.
+The sound class contains a boolean value representing if it has been played or not. 
+This value is set to true every time \lstinline|Play| is run and set to false every time \lstinline|Reset| is run.
+This ensures that the sound is only played once, and that it can first be played again when needed.
+
+\subsection{Handling touch events}\label{framework:touchevents}
+In order to handle input on the screen the framework contains a \lstinline|SingleTouchHandler| class.
+This class handles input events and is sent to the \lstinline|update| method of the screen as an array of \lstinline|InputEvent|.
+Each \lstinline|InputEvent| contains $x$ and $y$ coordinates; where the touch occured, along with its type; \lstinline|TOUCH_DOWN, TOUCH_UP, TOUCH_DRAGGED| or \lstinline|TOUCH_HOLD|.
+
+\subsection{Deltatime}\label{framework:deltatime}
+Screens are also provided a floating point number \lstinline|deltaTime|, which is based on the current system time in milliseconds.
+This makes it possible to determine how much time has gone by between frame-updates (as this won't always be the same).
+This makes it possible to make smooth animations over the course of time, despite having slightly time-differences between frames.
+It can also be used to time events, such as a countdown-timer.

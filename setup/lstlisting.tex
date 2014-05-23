@@ -1,4 +1,4 @@
-% Her er en liste over navnene på de forskellige styles
+% Her er en liste over navnene pÃ¥ de forskellige styles
 % C#: csharp
 % F#: fsharp
 
@@ -13,7 +13,7 @@
 \Crefname{algocf}{Algorithm}{Algorithms}
 %
 
-% Angivelse af navn på listings
+% Angivelse af navn pÃ¥ listings
 \renewcommand\lstlistingname{Code example}
 \renewcommand\lstlistlistingname{Code example}
 
@@ -23,8 +23,8 @@
 	framesep=5pt,
 	rulecolor=\color{blue!40!black},
 	rulesepcolor=\color{white!93!black},
-	basicstyle=\ttfamily\scriptsize,
 	numbers=left,
+	basicstyle=\ttfamily,
 	numberstyle=\tiny,
 	numberfirstline=true,
 	%numberblanklines=false,
@@ -32,7 +32,9 @@
 	numbersep=9pt,	
 	captionpos=b,
 	escapeinside={(*}{*)},
-	breaklines=true
+	breaklines=true,
+	tabsize=4,
+	language=c
 }
 
 \lstset{style=standard}
@@ -44,8 +46,7 @@
 
 \lstdefinestyle{csmall}
 {
-	style=c,
-	basicstyle=\ttfamily\footnotesize
+	style=c
 }
 
 \lstdefinestyle{csharp}
@@ -55,8 +56,7 @@
 }
 \lstdefinestyle{csharpsmall}
 {
-	style=csharp,
-	basicstyle=\ttfamily\footnotesize
+	style=csharp
 }
 \lstdefinestyle{fsharp}
 {

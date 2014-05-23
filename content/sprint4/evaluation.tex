@@ -1,0 +1,49 @@
+\subsection{Evaluation}
+This section will contain an evaluation on the fourth sprint, and how the requirements that changed after the interview (\cref{s4_interview}) have been fulfilled.
+
+\begin{tabularenumerate}
+\begin{longtable}{c|l|c|c}
+\textbf{\#} & \textbf{Requirement} & \textbf{Solved} & \textbf{Link} \\
+\hline
+\tabenum & \begin{tabular}[l]{@{}l@{}}The game must not be a side-scrolling game,\\because the citizen must be able to see the goal\end{tabular}
+ & $\surd$ & \cref{sprint1:req1} \\
+\hline
+\tabenum \label{sprint4_control} & \begin{tabular}[l]{@{}l@{}} The car is controlled in such a way,\\that the vertical position of the car is relative\\ to the current loudness of the player's voice.\end{tabular}& $\surd$ & \cref{sprint2:car_control} \\
+\hline
+\tabenum \label{sprint4_objective} & \begin{tabular}[l]{@{}l@{}} The goal of the game is to reach the finishing line\\ after successfully collecting all items or avoiding \\ all items (two different game modes) \end{tabular} & $\surd$ & \cref{s4_gameobjective} \\
+\hline
+\tabenum  & When the game is won an reward should be given & $\surd$ & \cref{sprint2:won} \\
+\hline
+\tabenum & \begin{tabular}[l]{@{}l@{}}It must be possible\\to save and load settings for a specific profile\end{tabular} & $\surd$ & \cref{sprint3:database} \\
+\hline
+\tabenum & It must be possible to calibrate the microphone & $\surd$ & \cref{sprint3:control_car} \\
+\hline
+\tabenum  & \begin{tabular}[l]{@{}l@{}}There is a digit between 0 and 10\\ displayed on the car as well as obstacles,\\ representing the loudness level,\\ based on its vertical position.\end{tabular} & $\surd$ & \cref{sprint2:gauges} \\
+\hline
+\tabenum  & \begin{tabular}[l]{@{}l@{}}Besides the scales from 0 to 10,\\ both speed and loudness have pictograms\\ illustrating some of the values on these scales.\end{tabular} & $\surd$ & \cref{sprint3:settings} \\
+\hline
+\tabenum  & \begin{tabular}[l]{@{}l@{}}It should be possible to pause the game.\\ When the game is paused,\\ a loudness-barometer is displayed next to the car,\\ further visualizing the current loudness.\end{tabular} & $\surd$ & \cref{sprint2:paused} \\
+\hline
+\tabenum  & \begin{tabular}[l]{@{}l@{}}Speed is alterable. The speed level\\ is represented as a digit between 0 and 10.\end{tabular} & $\surd$ & \cref{sprint3:settings} \\
+\hline
+\tabenum  & \begin{tabular}[l]{@{}l@{}}The placement and number of obstacles\\ is alterable.\end{tabular} & $\surd$ & \cref{sprint2:map_editor} \\
+\hline
+\tabenum & \begin{tabular}[l]{@{}l@{}}The placement of obstacles should be\\ in such a way,\\ that it is possible to adapt it to both citizen\\ with tendency to speaking too loud\\ as well as those speaking too low.\end{tabular} & $\surd$ & \cref{sprint2:map_editor} \\
+\hline
+\tabenum & \begin{tabular}[l]{@{}l@{}}The graphics need to be simple,\\ as some citizens have a low attention span\\ and are easily distracted.\end{tabular} & $\surd$ & \cref{sprint2:graphics} \\
+\hline
+\tabenum  & \begin{tabular}[l]{@{}l@{}}It should be possible, in settings, to switch\\ between avoiding objects and picking objects up.\end{tabular} & $\surd$ & \cref{sprint3:settings} \\
+\hline
+\tabenum & \begin{tabular}[l]{@{}l@{}}It is important that the pickup/category\\ ''mode'' is optional, due to different capabilities\\ for each citizen.\end{tabular} & $\surd$ & \cref{sprint3:settings} \\
+\hline
+\tabenum \label{sprint4_sounds}& \begin{tabular}[l]{@{}l@{}} The game must use sounds at key events,\\ such as Car revving at the countdown screen.\\ Sound when collecting/colliding with things.\\
+A jingle when the game is won.
+\end{tabular}  & $\surd$ & \cref{s4_buttonsounds} \\
+\hline
+\tabenum \label{sprint4_buttonspeak}& \begin{tabular}[l]{@{}l@{}} All buttons need to read their text when pressed.
+\end{tabular} & $\surd$ & \cref{s4_buttonsounds} \\
+\hline
+\caption{Requirements fulfilled after sprint 4.}
+\label{sprint4:requirement_table}
+\end{longtable}
+\end{tabularenumerate}
