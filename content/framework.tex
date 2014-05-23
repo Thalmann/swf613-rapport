@@ -5,7 +5,7 @@ It was therefore relatively painless to get to the actual design of the game.
 Some project proposals at the beginning of the semester suggested making more games for the citizens.
 It is therefore ideal to create a separate project that contains the framework so others can use it in future projects.
 Our modified version of the framework has been moved to a new repository for this to be possible.
-This repository can be a base for the development of future games in the giraf project.
+This repository can be a base for the development of future games in the GIRAF project.
 
 In this chapter the usage of the framework will be described in order to make it easier for the students from next semester to create games in it.
 
@@ -25,7 +25,7 @@ The method \lstinline|getInitScreen()| needs to be overridden in order to tell t
 All screens need to override their \lstinline|paint| and \lstinline|update| methods, as these methods are continuously called while the screen is active.
 The \lstinline|paint| method carries a reference to the \lstinline|Graphics| object (see the following section).
 The \lstinline|update| method carries a reference to \lstinline|Input.TouchEvent[]| (see \cref{framework:touchevents}).
-Both methods also have a floating number \lstinline|deltaTime| (see \cref{framework:deltatime}).
+Both methods also have a floating point number \lstinline|deltaTime| (see \cref{framework:deltatime}).
 
 All screens are created with a reference to the \lstinline|GameActivity| that created it, making available the method \lstinline|setScreen|, which changes the currently active screen.
 
@@ -35,31 +35,17 @@ The same pattern applies to any object that needs to be drawn, but with the \lst
 
 \subsection{The Graphics Class}
 Drawing on the screen is handled by the \lstinline|Graphics| class in the framework.
-This class exposes methods to draw basic shapes as well as text and images on the canvas.
-The screens' \lstinline|paint| function carry a reference to the \lstinline|Graphics| object, making available all functions needed for manipulating the canvas.
+This class exposes methods to draw basic shapes, as well as text and images.
+The screen's \lstinline|paint| function carries a reference to the \lstinline|Graphics| object, making available all functions needed for drawing onto a screen.
 
 \subsection{The Audio Class}
 Music and sounds are handled by the \lstinline|Audio| class.
-It is responsible for loading sound-files into \lstinline|Sound| and \lstinline|Music| objects, where after these can be used to play the loaded audio.
+It is responsible for loading sound-files into \lstinline|Sound| and \lstinline|Music| objects, where after these can be used to play the loaded music/sounds.
 
 \subsection{Loading assets}
-Graphics and sounds need to be loaded before they can be displayed in the game. 
-As an example, this could be done in a static \lstinline|Assets| class with a static method loading all assets.
-An excerpt of such a method, displaying the loading of an image and the loading of a sound, can be seen in \cref{loadassets}.
-
-\begin{lstlisting}[caption=The LoadAssets method, label=loadassets]
-public static void LoadAssets(Graphics graphics, Audio audio) 
-{
-	if (loaded)
-		return;
-
-	grass = graphics.newImage("grass.jpg", Graphics.ImageFormat.RGB565);
-	
-	carStart = audio.createSound(R.raw.car_start);
-	
-	loaded = true;
-}
-\end{lstlisting}
+Images and audio need to be loaded before they can be displayed in the game.
+Images are loaded into \lstinline|Image| objects, using \lstinline|Graphic|'s \lstinline|newImage| method.
+Audio is loaded using \lstinline|Audio|'s \lstinline|createMusic| or \lstinline|createSound| methods.
 
 \subsection{Playing sounds}
 The framework contains a class used for playing sounds in the game. 
@@ -70,10 +56,11 @@ This ensures that the sound is only played once, and that it can first be played
 
 \subsection{Handling touch events}\label{framework:touchevents}
 In order to handle input on the screen the framework contains a \lstinline|SingleTouchHandler| class.
-This class handles input events and sends them to the update method of the screen as an array of \lstinline|InputEvent|.
-Each \lstinline|InputEvent| contains $x$ and $y$ coordinates, where the touch occured, along with its type; \lstinline|TOUCH_DOWN, TOUCH_UP, TOUCH_DRAGGED| or \lstinline|TOUCH_HOLD|.
+This class handles input events and is sent to the \lstinline|update| method of the screen as an array of \lstinline|InputEvent|.
+Each \lstinline|InputEvent| contains $x$ and $y$ coordinates; where the touch occured, along with its type; \lstinline|TOUCH_DOWN, TOUCH_UP, TOUCH_DRAGGED| or \lstinline|TOUCH_HOLD|.
 
 \subsection{Deltatime}\label{framework:deltatime}
-Screens are also provided a floating number \lstinline|deltaTime|, which is based on the current system time in nano-seconds.
-This makes it possible to determine how much time has gone by between frame-updates (in case this is not always the same).
+Screens are also provided a floating number \lstinline|deltaTime|, which is based on the current system time in milliseconds.
+This makes it possible to determine how much time has gone by between frame-updates (as this won't always be the same).
+This makes it possible to make smooth animations over the course of time, despite having slightly time-differences between frames.
 It can also be used to time events, such as a countdown-timer.
