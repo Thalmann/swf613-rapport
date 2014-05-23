@@ -60,7 +60,7 @@ This class handles input events and is sent to the \lstinline|update| method of 
 Each \lstinline|InputEvent| contains $x$ and $y$ coordinates; where the touch occured, along with its type; \lstinline|TOUCH_DOWN, TOUCH_UP, TOUCH_DRAGGED| or \lstinline|TOUCH_HOLD|.
 
 \subsection{Deltatime}\label{framework:deltatime}
-Screens are also provided a floating number \lstinline|deltaTime|, which is based on the current system time in milliseconds.
+Screens are also provided a floating point number \lstinline|deltaTime|, which is based on the current system time in milliseconds.
 This makes it possible to determine how much time has gone by between frame-updates (as this won't always be the same).
 This makes it possible to make smooth animations over the course of time, despite having slightly time-differences between frames.
 It can also be used to time events, such as a countdown-timer.
