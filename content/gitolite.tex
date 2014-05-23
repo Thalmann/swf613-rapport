@@ -1,3 +1,40 @@
+\chapter{Git}
+The code-base for the various applications and sub-projects that are part of the GIRAF project is quite big and requires that multiple people (possibly from different groups) can work on the same project at once.
+\mikkel{Kalder vi det overordnede project for ''GIRAF''?}
+Thus a content management system is required to manage the code and its various revisions. 
+It was unanimously decided by all project groups to use Git as this content management system.
+One of the reasons for using Git was that that an administration tool had already been installed on the GIRAF server.
+In \cref{git:gitolite} this tool is described along with a guide to its usage.
+
+Some of the students partaking in the project where new to the use of Git.
+Because of this a \textit{''git specialist''} was chosen.
+This specialist was a member of the group developing the car game. \mikkel{What is game name?}
+\mikkel{Hvor meget skal der skrives om hvor lang tid der er brugt på support?}
+
+\section{Gitolite}\label{git:gitolite}
+Gitolite is an administration tool for git repositories.
+Interaction with Gitolite is done through a git repository (\texttt{gitolite-admin}) in which all repositories are defined in one or more configuration files.
+Using hooks Gitolite will create repositories when new ones are defined.
+The syntax of these configuration files is described in \cref{git:gitolite:config}.
+
+\paragraph{Accessing the server}
+Each GIRAF repository is exposed through two urls.
+One is read-only and is publicly available.
+This allows projects to have other repo's as submodules without having write-access.
+It also simplifies the servers automated build as no authentication is required.
+The second url is one to which access is restricted (see \cref{git:gitolite:config}).
+The two urls are as follows:
+\begin{center}
+\url{http://cs-cust06-int.cs.aau.dk/git-ro/} (read-only)\\
+\url{http://cs-cust06-int.cs.aau.dk/git/} (read-write)
+\end{center}
+Each url lists a collection of repositories.
+The urls for a repo is equal to appending the repo name to either of the above urls.
+Connecting to these repositories can be done using LDAP authentication.
+This means that the standard @student.aau.dk logins used for AAUs systems will apply to Gitolite.
+
+\subsection{Configuration files}\label{git:gitolite:config}
+
 %Gitolite
 %Common problems
 % - Branches
