@@ -4,7 +4,7 @@ Classes do not have a clearly defined responsibility, and functionality is inste
 This breaks the concept of keeping high cohesion in object oriented design. 
 Cohesion is a measure of how the responsibilities of a module are related. 
 If the responsibilities are highly related, the module is said to have high cohesion.
-An advantage of high cohesion is that it improves maintainability of the system, because changes in one module requires fewer changes in other modules. \stefan{source på cohesion (OOAD)?}
+An advantage of high cohesion is that it improves maintainability of the system, because changes in one module requires fewer changes in other modules.\cite{OOAD}
 
 An example of low cohesion in the cars project is the \lstinline!Car! class(\cref{car_class}).
 This class has the responsibility to draw itself, move itself according to pitch of the sound recorded by the microphone, calculate collisionboxes and determine if the car has collided with an obstacle and close the garage if the car has driven into the goal garage.
@@ -12,7 +12,7 @@ This class has the responsibility to draw itself, move itself according to pitch
 Another concept the existing code breaks is coupling.
 Coupling is the number of  dependencies between modules.
 It is desirable to keep this number as low as possible, known as having low coupling.
-Low coupling has the advantage of making it easier to make changes in module, as they are not independent on each other.
+Low coupling has the advantage of making it easier to make changes in module, as they are not independent on each other.\cite{OOAD}
 
 When trying to read and understand the existing implementation of the control of the car by pitch, it turned out to be very hard.
 Because the code responsible for handling the pitch is spread out on several classes, this relatively simple change becomes very complicated.
