@@ -38,7 +38,7 @@ This is known as double buffering.
 Whenever a new frame has been drawn on the back buffer, using the methods described above the content of the buffer is drawn onto the view associated with the activity.
 After the update a new frame-render is started.
 
-As the rendering of frames is done continuously in a separate thread, there is no way to ensure a fixed framerate.\bruno{thomas: frame independent movement}
-Instead the thread stores a timestamp whenever a frame has been rendered.
+As the rendering of frames is done continuously in a separate thread, there is no way to ensure a fixed framerate.
+In order to implement the updates frame independent the thread stores a timestamp whenever a frame has been rendered.
 This is then later used to determine the time the has passed since the last frame.
 This information can be used to properly update changes in a game, such as ensuring that a car moves at a constant speed.
