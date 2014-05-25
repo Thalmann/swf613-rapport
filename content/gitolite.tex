@@ -44,7 +44,7 @@ These are described throughout the following section.
 Note however that the access rules described below are only those applied in the course of the 2014 spring semester.
 Gitolite has an online manual\footnote{\url{http://gitolite.com/gitolite/master-toc.html}} for its usage to which one should refer for any additional information.
 
-\paragraph{Users and groups}
+\subsubsection{Users and groups}
 In addition to defining repositories, Gitolite allows the definition of groups.
 A group can be either a group of repositories or a group of users.
 In the context of GIRAF only the latter is applied.
@@ -57,6 +57,15 @@ A group is defined by prefixing a name with a \textit{@} symbol, as below:
 This creates a group called \texttt{@sw600f14} with two members.
 The use of AAU email addresses allows the usernames to correspond directly to the LDAP authenticated users.
 A group can also consist of other groups, such that a group can be created from the list of all semester groups.
+
+\subsubsection{Multiple configuration files}
+The \texttt{.conf} file loaded by Gitolite is the \texttt{gitolite.conf}.
+As the list of repositories grow, multiple configuration files can be created and included.
+To include a configuration file \textit{repos.conf} Gitolite has an \texttt{include} command:
+\begin{center}
+\texttt{include "repos.conf"}
+\end{center}
+This command can also be used in configuration files included using the command, and is usefull when trying to separate various types of repositories.
 
 %Gitolite
 %Common problems
