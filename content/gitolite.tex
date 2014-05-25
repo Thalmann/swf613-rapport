@@ -1,4 +1,5 @@
 \chapter{Git}
+\mikkel{Git med stort G?}
 The code-base for the various applications and sub-projects that are part of the GIRAF project is quite big and requires that multiple people (possibly from different groups) can work on the same project at once.
 Thus a content management system is required to manage the code and its various revisions. 
 It was unanimously decided by all project groups to use Git as this content management system.
@@ -119,6 +120,35 @@ There are additional rules available to Gitolite such as only allowing users to 
 \end{itemize}
 Note that the first rule specifies that everyone can read from the repository.
 This in turn means that the remaining rules only restrict write access to the repository.
+
+\section{Common Git difficulties}
+Git is a quite flexible tool for managing code.
+One of the reasons for this is the number of commands provided by Git.
+This was the main cause of problems with the usage of Git, as many of the student working on the GIRAF project were new to Git.
+Thus the git specialist spend a lot of time supporting other groups in the efforts to use Git.
+This included, in part, an introductory presentation to Git early in the semester.
+The following chapter will describe some of the typical issues with Git encountered during the project.
+
+\subsection{Staging content}
+As most users had previously only been exposed to the SVN content management system, there were some confusion as to Gits additional \textit{staging} and \textit{pushing} steps in the commit process.
+Where SVN copies all changes to files from your local machine to a server in one step, Git allows local staging of content, local storing of commit before eventually pushing to the server.
+This difference was not properly understood by a lot of the students, as they continued in the SVN workflow of always sharing each change.
+It is the view of the Git specialist that more time is spent discussing the use of Git, in order to properly take advantage of the possibilities of git.
+
+\subsection{Branching and merging}
+The understanding of the difference between a local branch and remote branch was hard to grasp for many students.
+Similar to the problems described above, the typical issue was that a true copy of a centralized server was expected - as is the case with SVN.
+The concept of what is stored locally and what is stored remotely was not properly explained and/or understood.
+The result of this was that many branches intended as local-only were pushed to the server and consequently created by others working on the same project.
+
+Similarly, the idea of \textit{''parallel''} work on multiple local branches seemed a scary thought to many.
+Some simply kept to the linear world they were accustomed to.
+
+The confusion that arose from the multiple branches never lead to big problems, but mainly to insecurity due to the complexity of Git.
+Thus a lot of time was spent by the Git specialist in an effort to clarify these difficulties.
+
+\subsection{Submodules}
+\subsubsection{Referring local changes}
 %Gitolite}
 %Common problems
 % - Branches
