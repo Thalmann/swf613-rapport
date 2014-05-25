@@ -12,7 +12,7 @@ This specialist was a member of the group developing \textit{Stemmespillet}.
 
 \section{Gitolite}\label{git:gitolite}
 Gitolite is an administration tool for git repositories.
-Interaction with Gitolite is done through a git repository (\texttt{gitolite-admin}) in which all repositories are defined in one or more configuration files.
+Interaction with Gitolite is done through a git repository in which all repositories are defined in one or more configuration files.
 Using hooks Gitolite will create repositories when new ones are defined.
 The syntax of these configuration files is described in \cref{git:gitolite:config}.
 
@@ -33,6 +33,30 @@ Connecting to these repositories can be done using LDAP authentication.
 This means that the standard @student.aau.dk logins used for AAUs systems will apply to Gitolite.
 
 \subsection{Configuration files}\label{git:gitolite:config}
+As mentioned above, repositories in Gitolite are configured through a Git repository.
+This repository can be found at the url below:
+\begin{center}
+\url{http://cs-cust06-int.cs.aau.dk/git/gitolite-admin/}
+\end{center}
+In the \texttt{conf} directory in the repository, a collection of files define all the GIRAF repositories.
+To each repository a set of access rules apply.
+These are described throughout the following section.
+Note however that the access rules described below are only those applied in the course of the 2014 spring semester.
+Gitolite has an online manual\footnote{\url{http://gitolite.com/gitolite/master-toc.html}} for its usage to which one should refer for any additional information.
+
+\paragraph{Users and groups}
+In addition to defining repositories, Gitolite allows the definition of groups.
+A group can be either a group of repositories or a group of users.
+In the context of GIRAF only the latter is applied.
+In the two files \texttt{sw6f13-groups.conf} and \texttt{sw6f14-groups.conf} the project groups for each semester are defined.
+This scheme could be repeated for other semesters.
+A group is defined by prefixing a name with a \textit{@} symbol, as below:
+\begin{center}
+\texttt{@sw600f14 = user1@student.aau.dk user2@student.aau.dk}
+\end{center}
+This creates a group called \texttt{@sw600f14} with two members.
+The use of AAU email addresses allows the usernames to correspond directly to the LDAP authenticated users.
+A group can also consist of other groups, such that a group can be created from the list of all semester groups.
 
 %Gitolite
 %Common problems
