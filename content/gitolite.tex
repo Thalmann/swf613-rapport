@@ -67,7 +67,60 @@ To include a configuration file \textit{repos.conf} Gitolite has an \texttt{incl
 \end{center}
 This command can also be used in configuration files included using the command, and is usefull when trying to separate various types of repositories.
 
-%Gitolite
+\subsubsection{Defining a repository}
+Defining a new repository in Gitolite is very simple.
+It must simply be defined, staged, commited and pushed (as any other content in git).
+When pushed to the server Gitolite will create the new repository.
+The following command defines a repository name newrepo:
+\begin{center}
+\texttt{repo newrepo}
+\end{center}
+Note that this definition does not explicitly tell Gitolite to create the new repository, just that it should exist.
+Thus the same repo can be defined multiple places with different sets of access rules.
+This allows for separating different types of access rules into different files (for instance a separate config file can hold any temporary access rules).
+
+\subsubsection{Access rules}
+Below in \cref{git:gitolite:example} is the definition of a fictitious repository \texttt{component}.
+Using this as an example, the various types of access rules will be described.
+There are four\footnote{There are additional advanced access types, but these have not been used for the GIRAF project} types of access available in Gitolite.
+The terms \textit{push} and \textit{write} are used interchangeably, as is \textit{pull}, \textit{fetch} and \textit{read}.
+The four access types are:
+\begin{description}
+\item[R] Allows the users listed to read from the repository, but not write.
+\item[RW] Allows the users listed to read from and write to the repository.
+\item[RW+] Similar to \textbf{RW}, but also allows deletion.
+This access type allows removal of remote branches and forced push.
+In the context of GIRAF, this type of access has been reserved for the git specialist.
+\item[- (dash)] The users listed are not allowed to read from or write to the repository.
+This can be used to cancel parts of broadly defined access rights.
+\end{description}
+\begin{lstlisting}[caption={A Gitolite configuration file},label=git:gitolite:example]
+repo component
+    R   = @all
+    RW  = username1 username2
+    RW+ = @admin
+    RW VREF/NAME/dir1/ = username1
+    RW VREF/NAME/dir2/file = username1
+    -  VREF/NAME/ = username1
+    RW branchname = @fixers
+\end{lstlisting}
+In \cref{git:gitolite:example} we see examples of all the access types.
+Below is a list of how each of the lines in the example should be read.
+\begin{itemize}
+\item Everybody can read from the repository.
+The \texttt{@all} usergroup is predefined by Gitolite to be all users or all repositories, depending on the context.
+\item \texttt{username1} and \texttt{username2} have read and write access to the repository.
+\item Administrators can delete information from the repository.
+The \texttt{@admin} is not predefined by Gitolite.
+\item \texttt{username1} has read and write access to the directory \texttt{/dir1/} and the file \texttt{/dir2/file}, but does not have access to any other files.
+Notice that line 3 is required for \texttt{username1} to be able to write to the repository at all.
+The \texttt{VREF} rule is checked when the actual push is happening.
+There are additional rules available to Gitolite such as only allowing users to push a certain number of times or only at specific times of day.
+\item The \texttt{@fixers} usergroup can read and write to the \texttt{branchname} branch in the repo.
+\end{itemize}
+Note that the first rule specifies that everyone can read from the repository.
+This in turn means that the remaining rules only restrict write access to the repository.
+%Gitolite}
 %Common problems
 % - Branches
 % - Submodules
