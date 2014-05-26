@@ -163,7 +163,18 @@ The confusion that arose from the multiple branches never lead to big problems, 
 Thus a lot of time was spent by the \git{} specialist in an effort to clarify these difficulties.
 
 \subsection{Submodules}
+The greatest cause for difficulty regarding \git{} was the use of submodules.
+In \git{} submodules represent the inclusion of one repository inside another.
+Using this kind of structure allows the nesting of shared components (such as \texttt{OasisLib} and \texttt{giraf-component}) inside other projects.
+\Git{} will then allow its users to work with these components as separate repositories while tracking which version of the repositories are in use.
+The benefit of this tracking is that when a new version of these components is created, each project can upgrade to the newest version in its own pace.
+
+Many groups had difficulties understanding how the submodules in \git{} worked.
+Asides from having to assist in the adding and removal of submodules, the \git{} specialist encountered two general problems in regards to \git{} submodules.
+These problems will be explained in the following two sections.
+
 \subsubsection{Referring local changes}\label{git:sub:sha}
+\subsubsection{Deep clone}\label{git:sub:deep}
 %Gitolite}
 %Common problems
 % - Branches
