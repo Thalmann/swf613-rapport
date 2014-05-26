@@ -135,8 +135,15 @@ The following chapter will describe some of the typical issues with \git{} encou
 \subsection{Staging content}
 As most users had previously only been exposed to the SVN content management system, there were some confusion as to \git{}s additional \textit{staging} and \textit{pushing} steps in the commit process.
 Where SVN copies all changes to files from your local machine to a server in one step, \git{} allows local staging of content, local storing of commit before eventually pushing to the server.
-This difference was not properly understood by a lot of the students, as they continued in the SVN workflow of always sharing each change.
-It is the view of the \git{} specialist that more time is spent discussing the use of \git{}, in order to properly take advantage of the possibilities of git.
+
+This difference was not properly understood by many of the groups, as they continued in the SVN workflow of always sharing each change (in order to keep commits small), or only committed seldom yielding large commits that were harder to merge with the remaining group members.
+
+Another major problem that arose from this was the use of the \texttt{git add .} command, which stages all content in the current directory.
+This command (without the use of \texttt{git status} and \texttt{git diff}) renders \git{} blind to what they are actually committing.
+The result was that often undesired code wash pushed to the shared server.
+A special type of problem resulting from this misuse of \git{} is explained in \cref{git:sub:sha}.
+
+It is the view of the \git{} specialist that more time should be spent discussing the proper use of \git{}, in order to take advantage of the possibilities of git and avoid many of the problems associated with \git{}.
 
 \subsection{Branching and merging}
 The understanding of the difference between a local branch and remote branch was hard to grasp for many students.
@@ -151,7 +158,7 @@ The confusion that arose from the multiple branches never lead to big problems, 
 Thus a lot of time was spent by the \git{} specialist in an effort to clarify these difficulties.
 
 \subsection{Submodules}
-\subsubsection{Referring local changes}
+\subsubsection{Referring local changes}\label{git:sub:sha}
 %Gitolite}
 %Common problems
 % - Branches
