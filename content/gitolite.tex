@@ -197,8 +197,33 @@ They are then not able to push their changes but only their reference to the con
 In particular this problem exists due to the wrongful use of \texttt{git add .} where all content is blindly staged without concern for what content should actually be committed.
 
 \subsubsection{Deep clone}\label{git:sub:deep}
-%Gitolite}
-%Common problems
-% - Branches
-% - Submodules
-%Appendix info on setup and links to git-intro video'er
+The GIRAF repository \texttt{OasisLib} is referenced by multiple project.
+Amongst those both \texttt{giraf-component} and \texttt{cars}.
+As the latter also includes \texttt{giraf-component} this infers a duplicate inclusion of \texttt{OasisLib} in \texttt{cars}.
+The situation has been illustrated in \cref{git:sub:clonefig}.
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance=0.8cm, thick, every node/.style={draw=black,thick}]
+  \node (cars) {\texttt{cars}};
+  \node[below right = of cars] (oasis1) {\texttt{OasisLib}};
+  \node[below = of oasis1] (giraf) {\texttt{giraf-component}};
+  \node[below right = of giraf] (oasis2) {\texttt{OasisLib}};
+  \draw[->] (cars) |- (oasis1);
+  \draw[->] (cars) |- (giraf);
+  \draw[->] (giraf) |- (oasis2);
+\end{tikzpicture}
+\caption{Deep clone of the \texttt{cars} repository.}
+\label{git:sub:clonefig}
+\end{figure}
+The figure illustrates the submodules associated with the \texttt{cars} repository.
+There were however other repositories with a much larger tree of submodules.
+In the development environment only the topmost level of submodules were used and thus the remaining were not to be cloned.
+However many groups performed a \textit{deep clone} in which they cloned the entire structure.
+This is not directly a problem, but the cause of much confusion.
+Combined with the problems described in \cref{git:sub:sha} this caused quite a few problems for the groups with many submodules associated with their project.
+These problems were all attended to by the git specialist.
+
+\mikkel{Jeg har skrevet følgende i noter til mig selv:\\
+Appendix: info on setup and links to git-intro video'er\\
+Skal vi have noget i appendix?
+}
