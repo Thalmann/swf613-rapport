@@ -2,7 +2,7 @@
 The vertical motion of the car is determined by voice input.
 Using the volume recorded by the microphone, a value in the interval $[0-1]$ is calculated, where 0 represents silence and 1 represents \textit{maximum} volume.
 The value is then mapped linearly to a vertical position in the game.
-After this calculation is completed and a final value is determined, the car must be moved.
+The car is then moved to this position on the game field.
 
 \paragraph{Positioning the car}
 Given a vertical position where the car \textit{should} be placed, the car could simple be moved to its destination on each frame update.
@@ -61,7 +61,7 @@ For larger spikes a bigger value of $x$ is required to compensate.
 The result of this is a significant delay in the effect of raising the volume of ones voice.
 
 \subsection{Acceleration and deceleration}\label{stability:acceleration}
-Another approach to managing the car's position is by having the car accelerate and decelerate when moving vertically.
+Another approach to managing the position of the is by having the car accelerate and decelerate when moving vertically.
 Spikes in volume would then be met with a deceleration in speed.
 But as they are often quite short-lived the car would quickly accelerate again.
 Thus the spikes problem is solvable using this methodology.
@@ -69,9 +69,12 @@ Meanwhile the delay associated with averaging the measurements (section \ref{sta
 Using this method for moving the car can be defined as below:
 $$c_f = c_{f-1} + s_f \cdot \lambda_f$$
 Where $s_f$ refers to the cars vertical speed at frame $f$.
-We are then left to define $s_f$ in a way that involves acceleration and deceleration using $s_{f-1}$ and $\lambda_x$ as the only variables.
+We then 	define $s_f$ in a way that involves acceleration and deceleration using $s_{f-1}$ and $\lambda_x$ as the only variables.
 For this purpose a function $speed$ is introduced, yielding the following equation:
 $$c_f = c_{f-1} + \text{speed}(s_{f-1}, \lambda_f) \cdot \lambda_f$$\mikkel{Skal vi inkludere den egentlige funktion der definerer accelerationen? Jeg har det muligvis liggende i noget gammelt backup :P}
+\stefan{Thomas siger: Gammelt backup? - skriver I ikke at dette er jeres foretrukne måde ? Laver I måske om i sprint 4 ?
+
+Umiddelbart forstår jeg sagtens hvad I mener sådan som det er nu. Så det skulle kun være for "the sake of completeness" at I lige skulle skrive funktionen speed op som en matematisk funktion også.}
 We will not explore the actual function that defines the acceleration of the car in the context of the cars vertical motion as it is the methodology of how the car is moved that is of interest.
 Allowing the car to accelerate solves the problem caused by spikes in the voice input and gives direct feedback for the user.
 This is therefore the chosen solution to control the car.
