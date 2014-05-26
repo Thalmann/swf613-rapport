@@ -1,11 +1,23 @@
 \section{Connection to the database}
 \label{sprint3:database}
-In order to save the settings of the current user and make it available on all tablets with the Giraf applications installed, it is necessary to connect to the database.
-This requirement in stated in \cref{sprint2_database_req} in \cref{sprint2:requirement_table_2}.
-For this purpose the \lstinline!DatabaseHelper! class was created.
-This class contains methods for saving and loading settings from the database. 
 
-When the Cars application is launched, a \lstinline!child_id! and a \lstinline!guardian_id! is passed to the application. 
-This identification number identifies the child that is currently using the tablet.
-This identification number is used to load the correct settings when they are needed, which is in the game, in the settings window and in the mapeditor.
-The settings are saved to the database when either the settings window or the mapeditor is closed.
+As mentioned in \cref{multiproject:sharedcomponents}, apps within GIRAF can make use of a shared database, so that profiles and their settings can be saved.
+
+Apps opened within the GIRAF launcher are supplied with two integers; \lstinline|currentChildID| and \lstinline|currentGuardianID|.
+The first integer identifies the currently active child, however, this value will be $-1$ if no child is active.
+The second integer identifies the current institutional guardian, and is always supplied.
+\mikael{Der mangler noget forklaring her eller tidligere, ift. launcher, profiler og modes}
+
+Settings are loaded from the database whenever the settings, map-editor or main activities are started.
+Settings are saved whenever the settings or map-editor activities are terminated.
+
+\paragraph{Accessing the database}
+
+In order to access the local database (called LocalDB within GIRAF), a library \lstinline|OasisLib| must be used.
+\lstinline|OasisLib| makes available various controllers, the one used for saving and loading settings is called \lstinline|ProfileApplicationController|.
+By supplying the current \lstinline|Application|, which is a class that contains all identifying information about an application (name, package-name etc.) and the current profile id, a \lstinline|ProfileApplication| can be obtained, containing the settings for the corresponding application and profile.
+\lstinline|ProfileApplicationController| also contains methods for obtaining and modifying the loaded \lstinline|ProfileApplication|.
+
+Settings are saved within \lstinline|ProfileApplication| as a map \lstinline|Setting<String, String, String>|, where the strings represent key, type, and value accordingly.
+Cars has 3 setting keys; ''speed'', ''colors'', and ''calibration''.
+All values are therefore converted to strings and put in the map with their corresponding key. For colors and calibration, which contain more than one value, different types are also supplied.
