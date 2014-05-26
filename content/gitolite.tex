@@ -1,5 +1,6 @@
 \chapter{Git}
-\newcommand{\git}{Git}\newcommand{\gitolite}{Gitolite}
+\newcommand{\git}{Git}\newcommand{\Git}{Git}
+\newcommand{\gitolite}{Gitolite}\newcommand{\Gitolite}{Gitolite}
 \mikkel{Git med stort G?}
 \mikkel{Gitolite med stort G?}
 The code-base for the various applications and sub-projects that are part of the GIRAF project is quite big and requires that multiple people (possibly from different groups) can work on the same project at once.
@@ -12,8 +13,8 @@ Some of the students partaking in the project where new to the use of \git{}.
 Because of this a \textit{''git specialist''} was chosen.
 This specialist was a member of the group developing \textit{Stemmespillet}.
 
-\section{Gitolite}\label{git:gitolite}
-Gitolite is an administration tool for git repositories.
+\section{\Gitolite{}}\label{git:gitolite}
+\Gitolite{} is an administration tool for git repositories.
 Interaction with \gitolite{} is done through a git repository in which all repositories are defined in one or more configuration files.
 Using hooks \gitolite{} will create repositories when new ones are defined.
 The syntax of these configuration files is described in \cref{git:gitolite:config}.
@@ -44,7 +45,7 @@ In the \texttt{conf} directory in the repository, a collection of files define a
 To each repository a set of access rules apply.
 These are described throughout the following section.
 Note however that the access rules described below are only those applied in the course of the 2014 spring semester.
-Gitolite has an online manual\footnote{\url{http://gitolite.com/gitolite/master-toc.html}} for its usage to which one should refer for any additional information.
+\Gitolite{} has an online manual\footnote{\url{http://gitolite.com/gitolite/master-toc.html}} for its usage to which one should refer for any additional information.
 
 \subsubsection{Users and groups}
 In addition to defining repositories, \gitolite{} allows the definition of groups.
@@ -123,8 +124,8 @@ There are additional rules available to \gitolite{} such as only allowing users 
 Note that the first rule specifies that everyone can read from the repository.
 This in turn means that the remaining rules only restrict write access to the repository.
 
-\section{Common Git difficulties}
-Git is a quite flexible tool for managing code.
+\section{Common \git{} difficulties}
+\Git{} is a quite flexible tool for managing code.
 One of the reasons for this is the number of commands provided by \git{}.
 This was the main cause of problems with the usage of \git{}, as many of the student working on the GIRAF project were new to \git{}.
 Thus the git specialist spend a lot of time supporting other groups in the efforts to use \git{}.
