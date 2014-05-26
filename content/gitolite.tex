@@ -1,19 +1,21 @@
 \chapter{Git}
+\newcommand{\git}{Git}\newcommand{\gitolite}{Gitolite}
 \mikkel{Git med stort G?}
+\mikkel{Gitolite med stort G?}
 The code-base for the various applications and sub-projects that are part of the GIRAF project is quite big and requires that multiple people (possibly from different groups) can work on the same project at once.
 Thus a content management system is required to manage the code and its various revisions. 
-It was unanimously decided by all project groups to use Git as this content management system.
-One of the reasons for using Git was that that an administration tool had already been installed on the GIRAF server.
+It was unanimously decided by all project groups to use \git{} as this content management system.
+One of the reasons for using \git{} was that that an administration tool had already been installed on the GIRAF server.
 In \cref{git:gitolite} this tool is described along with a guide to its usage.
 
-Some of the students partaking in the project where new to the use of Git.
+Some of the students partaking in the project where new to the use of \git{}.
 Because of this a \textit{''git specialist''} was chosen.
 This specialist was a member of the group developing \textit{Stemmespillet}.
 
 \section{Gitolite}\label{git:gitolite}
 Gitolite is an administration tool for git repositories.
-Interaction with Gitolite is done through a git repository in which all repositories are defined in one or more configuration files.
-Using hooks Gitolite will create repositories when new ones are defined.
+Interaction with \gitolite{} is done through a git repository in which all repositories are defined in one or more configuration files.
+Using hooks \gitolite{} will create repositories when new ones are defined.
 The syntax of these configuration files is described in \cref{git:gitolite:config}.
 
 \paragraph{Accessing the server}
@@ -30,10 +32,10 @@ The two urls are as follows:
 Each url lists a collection of repositories.
 The urls for a repo is equal to appending the repo name to either of the above urls.
 Connecting to these repositories can be done using LDAP authentication.
-This means that the standard @student.aau.dk logins used for AAUs systems will apply to Gitolite.
+This means that the standard @student.aau.dk logins used for AAUs systems will apply to \gitolite{}.
 
 \subsection{Configuration files}\label{git:gitolite:config}
-As mentioned above, repositories in Gitolite are configured through a Git repository.
+As mentioned above, repositories in \gitolite{} are configured through a \git{} repository.
 This repository can be found at the url below:
 \begin{center}
 \url{http://cs-cust06-int.cs.aau.dk/git/gitolite-admin/}
@@ -45,7 +47,7 @@ Note however that the access rules described below are only those applied in the
 Gitolite has an online manual\footnote{\url{http://gitolite.com/gitolite/master-toc.html}} for its usage to which one should refer for any additional information.
 
 \subsubsection{Users and groups}
-In addition to defining repositories, Gitolite allows the definition of groups.
+In addition to defining repositories, \gitolite{} allows the definition of groups.
 A group can be either a group of repositories or a group of users.
 In the context of GIRAF only the latter is applied.
 In the two files \texttt{sw6f13-groups.conf} and \texttt{sw6f14-groups.conf} the project groups for each semester are defined.
@@ -59,30 +61,30 @@ The use of AAU email addresses allows the usernames to correspond directly to th
 A group can also consist of other groups, such that a group can be created from the list of all semester groups.
 
 \subsubsection{Multiple configuration files}
-The \texttt{.conf} file loaded by Gitolite is the \texttt{gitolite.conf}.
+The \texttt{.conf} file loaded by \gitolite{} is the \texttt{gitolite.conf}.
 As the list of repositories grow, multiple configuration files can be created and included.
-To include a configuration file \textit{repos.conf} Gitolite has an \texttt{include} command:
+To include a configuration file \textit{repos.conf} \gitolite{} has an \texttt{include} command:
 \begin{center}
 \texttt{include "repos.conf"}
 \end{center}
 This command can also be used in configuration files included using the command, and is usefull when trying to separate various types of repositories.
 
 \subsubsection{Defining a repository}
-Defining a new repository in Gitolite is very simple.
+Defining a new repository in \gitolite{} is very simple.
 It must simply be defined, staged, commited and pushed (as any other content in git).
-When pushed to the server Gitolite will create the new repository.
+When pushed to the server \gitolite{} will create the new repository.
 The following command defines a repository name newrepo:
 \begin{center}
 \texttt{repo newrepo}
 \end{center}
-Note that this definition does not explicitly tell Gitolite to create the new repository, just that it should exist.
+Note that this definition does not explicitly tell \gitolite{} to create the new repository, just that it should exist.
 Thus the same repo can be defined multiple places with different sets of access rules.
 This allows for separating different types of access rules into different files (for instance a separate config file can hold any temporary access rules).
 
 \subsubsection{Access rules}
 Below in \cref{git:gitolite:example} is the definition of a fictitious repository \texttt{component}.
 Using this as an example, the various types of access rules will be described.
-There are four\footnote{There are additional advanced access types, but these have not been used for the GIRAF project} types of access available in Gitolite.
+There are four\footnote{There are additional advanced access types, but these have not been used for the GIRAF project} types of access available in \gitolite{}.
 The terms \textit{push} and \textit{write} are used interchangeably, as is \textit{pull}, \textit{fetch} and \textit{read}.
 The four access types are:
 \begin{description}
@@ -94,7 +96,7 @@ In the context of GIRAF, this type of access has been reserved for the git speci
 \item[- (dash)] The users listed are not allowed to read from or write to the repository.
 This can be used to cancel parts of broadly defined access rights.
 \end{description}
-\begin{lstlisting}[caption={A Gitolite configuration file},label=git:gitolite:example]
+\begin{lstlisting}[caption={A \gitolite{} configuration file},label=git:gitolite:example]
 repo component
     R   = @all
     RW  = username1 username2
@@ -108,14 +110,14 @@ In \cref{git:gitolite:example} we see examples of all the access types.
 Below is a list of how each of the lines in the example should be read.
 \begin{itemize}
 \item Everybody can read from the repository.
-The \texttt{@all} usergroup is predefined by Gitolite to be all users or all repositories, depending on the context.
+The \texttt{@all} usergroup is predefined by \gitolite{} to be all users or all repositories, depending on the context.
 \item \texttt{username1} and \texttt{username2} have read and write access to the repository.
 \item Administrators can delete information from the repository.
-The \texttt{@admin} is not predefined by Gitolite.
+The \texttt{@admin} is not predefined by \gitolite{}.
 \item \texttt{username1} has read and write access to the directory \texttt{/dir1/} and the file \texttt{/dir2/file}, but does not have access to any other files.
 Notice that line 3 is required for \texttt{username1} to be able to write to the repository at all.
 The \texttt{VREF} rule is checked when the actual push is happening.
-There are additional rules available to Gitolite such as only allowing users to push a certain number of times or only at specific times of day.
+There are additional rules available to \gitolite{} such as only allowing users to push a certain number of times or only at specific times of day.
 \item The \texttt{@fixers} usergroup can read and write to the \texttt{branchname} branch in the repo.
 \end{itemize}
 Note that the first rule specifies that everyone can read from the repository.
@@ -123,17 +125,17 @@ This in turn means that the remaining rules only restrict write access to the re
 
 \section{Common Git difficulties}
 Git is a quite flexible tool for managing code.
-One of the reasons for this is the number of commands provided by Git.
-This was the main cause of problems with the usage of Git, as many of the student working on the GIRAF project were new to Git.
-Thus the git specialist spend a lot of time supporting other groups in the efforts to use Git.
-This included, in part, an introductory presentation to Git early in the semester.
-The following chapter will describe some of the typical issues with Git encountered during the project.
+One of the reasons for this is the number of commands provided by \git{}.
+This was the main cause of problems with the usage of \git{}, as many of the student working on the GIRAF project were new to \git{}.
+Thus the git specialist spend a lot of time supporting other groups in the efforts to use \git{}.
+This included, in part, an introductory presentation to \git{} early in the semester.
+The following chapter will describe some of the typical issues with \git{} encountered during the project.
 
 \subsection{Staging content}
-As most users had previously only been exposed to the SVN content management system, there were some confusion as to Gits additional \textit{staging} and \textit{pushing} steps in the commit process.
-Where SVN copies all changes to files from your local machine to a server in one step, Git allows local staging of content, local storing of commit before eventually pushing to the server.
+As most users had previously only been exposed to the SVN content management system, there were some confusion as to \git{}s additional \textit{staging} and \textit{pushing} steps in the commit process.
+Where SVN copies all changes to files from your local machine to a server in one step, \git{} allows local staging of content, local storing of commit before eventually pushing to the server.
 This difference was not properly understood by a lot of the students, as they continued in the SVN workflow of always sharing each change.
-It is the view of the Git specialist that more time is spent discussing the use of Git, in order to properly take advantage of the possibilities of git.
+It is the view of the \git{} specialist that more time is spent discussing the use of \git{}, in order to properly take advantage of the possibilities of git.
 
 \subsection{Branching and merging}
 The understanding of the difference between a local branch and remote branch was hard to grasp for many students.
@@ -144,8 +146,8 @@ The result of this was that many branches intended as local-only were pushed to 
 Similarly, the idea of \textit{''parallel''} work on multiple local branches seemed a scary thought to many.
 Some simply kept to the linear world they were accustomed to.
 
-The confusion that arose from the multiple branches never lead to big problems, but mainly to insecurity due to the complexity of Git.
-Thus a lot of time was spent by the Git specialist in an effort to clarify these difficulties.
+The confusion that arose from the multiple branches never lead to big problems, but mainly to insecurity due to the complexity of \git{}.
+Thus a lot of time was spent by the \git{} specialist in an effort to clarify these difficulties.
 
 \subsection{Submodules}
 \subsubsection{Referring local changes}
