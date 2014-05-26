@@ -1,8 +1,19 @@
 \section{GUI Components}
 During this sprint we also implemented the use of the shared GUI components, through the library \lstinline|giraf-components|.
+We used two components; \lstinline|GButton| and \lstinline|GColorPicker|.
+Additionally we used the standard background color, provided by the library.
+The button and colorpicker components can be seen in \cref{sprint3:gui:components}.
+\mikael{Indsæt figur med billeder når der er strøm på svinet igen}
 
 \paragraph{Background color}
-The main menu and setting activites were changed to use \lstinline|giraf-component|'s default background color, through \lstinline|GComponent|'s \lstinline|GetBackgroundColor()| method.
+The main menu and setting activites were changed to use \lstinline|giraf-component|'s default background color, through the class \lstinline|GComponent|'s \lstinline|GetBackgroundColor()| method.
 
 \paragraph{Buttons}
-All menu-related buttons were changed to \lstinline|GComponent|'s \lstinline|GButton|, which overrides the standard Android \lstinline|Button|.
+All menu-related buttons were changed to \lstinline|GButton|, which overrides the standard Android \lstinline|Button|.
+No functionality is any different for the button, only layout.
+
+\paragraph{Colorpicker}
+The colorpicker was used for selecting car/garage colors, as mentioned in \cref{sprint3:settings}.
+\lstinline|GComponent|'s \lstinline|GColorPicker| is an extension of \lstinline|GDialog|, which is an extension of Android's \lstinline|Dialog|.
+The initial color of the dialog must be set by its \lstinline|SetCurrColor(int color)| method.
+The new color, after choosing one in the dialog, is returned through the \lstinline|OnOkListener| interface, which provides the method \lstinline|OnOkClick(GColorPicker diag, int color)|.
