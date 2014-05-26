@@ -108,14 +108,31 @@ Issue-tracking was a tool for tracking progress of a project, as well as the pos
 Issue-tracking also made it easier for a group to take over the projects if they changed focus after a sprint.
 
 \subsubsection{Git}
-Git was used as version control.
-Since one of the group members was the Git-specialist, this is the focus of one of the collaboration chapters (see \ref{collaboration:git}).
-\bruno{Thomas: Man kunne evt. svare på følgende spørgsmål: - Hvad er fordelene med version kontrol?
-- Er der nogle specielle grunde til at git blev foretrukket over andre muligheder?}
-\mikael{Don't know what more to write here if anything.}
+Two tools were considered as content management tool for the GIRAF project; Git and SVN.
+The arguments for SVN were that it was the tool most students were accustomed to and thus would require little time to understand how to use.
+Git on the other hand had the benefit of having being set up by the previous students working on the GIRAF project.
+Git is also a superior version control tool as it performs branching and merging on a daily basis without conflicts, it allows for offline committing and, due to its distributed nature, automatically holds multiple backups of each project.
+
+To handle management of the Git repositories and assist with difficulties regarding Git a Git specialist was appointed.
+This specialist was part of the group developing the Cars application.
+Because of this one of the collaboration chapters focuses on Git (see \ref{collaboration:git}).
 
 \subsubsection{Jenkins}
-\mikael{Don't know what to exactly write here}.
+On the same server that hosted both Redmine and Git, Jenkins was also installed.
+Jenkins is a continuous integration tool that performs builds of the code pushed to the Git repositories.
+The two main reasons for using Jenkins were:
+\begin{itemize}
+\item To easily keep track of which projects were building, as to detect if something was not working properly.
+\item To at all times keep a collection of recent builds.
+\end{itemize}
+As Android applications build to \texttt{.apk} files, these were to be stored and downloadable from an ftp server.
+This would ensure that the newest version of all applications were always available for installation.
+
+Unfortunately even though the build process was up and running, the \texttt{apk}s build by the server were not signed.
+This meant that they could not be installed on the customers' tablets.
+This issue was not resolved in the course of the semester.
+
+The status of the builds performed by Jenkins were still monitored throughout the semester and helped in determining the state of each project.
 
 \section{Cars}
 Throughout the entire course of this project, the project-group has worked with an application called Stemmespillet (Translates to 'The Voice Game').
