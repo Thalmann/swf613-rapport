@@ -2,8 +2,26 @@
 During this sprint we also implemented the use of the shared GUI components, through the library \lstinline|giraf-components|.
 We used two components; \lstinline|GButton| and \lstinline|GColorPicker|.
 Additionally we used the standard background color, provided by the library.
-The button and colorpicker components can be seen in \cref{sprint3:gui:components}.
-\mikael{Indsæt figur med billeder når der er strøm på svinet igen}
+The button and colorpicker components can be seen in \cref{sprint3:guicomponents:fig}.
+
+\begin{figure}[h]
+\begin{subfigure}{0.49\textwidth}
+\centering
+\includegraphics[width=0.49\textwidth]{sprint3/gbutton}
+\caption{The \lstinline|GButton|s in Cars main Activity}
+\label{sprint3:guicomponents:fig:gbutton}
+\end{subfigure}
+~
+\begin{subfigure}{0.49\textwidth}
+\centering
+\includegraphics[width=0.49\textwidth]{sprint3/gcolorpicker}
+\caption{\lstinline|GColorPicker| in Cars settings Activity}
+\label{sprint3:guicomponents:fig:gcolorpicker}
+\end{subfigure}
+
+\caption{The graphics used in the game}
+\label{sprint3:guicomponents:fig}
+\end{figure}
 
 \paragraph{Background color}
 The main menu and setting activites were changed to use \lstinline|giraf-component|'s default background color, through the class \lstinline|GComponent|'s \lstinline|GetBackgroundColor()| method.
