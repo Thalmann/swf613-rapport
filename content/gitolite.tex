@@ -174,6 +174,28 @@ Asides from having to assist in the adding and removal of submodules, the \git{}
 These problems will be explained in the following two sections.
 
 \subsubsection{Referring local changes}\label{git:sub:sha}
+As mentioned above, a \git{} submodule references the currently used version of each of its submodules.
+This is done by continuously updating a reference to the SHA of the used submodule commit.
+As in the example below:
+
+\begin{quote}
+\textbf{Example}\\
+Let \textbf{A} and \textbf{B} be repositories, where \textbf{B} is a submodule in \textbf{A}.
+\textbf{A} keeps track of which version of \textbf{B} is in use by \textbf{A} by registering the SHA \texttt{2b8c053}\footnote{\Git{} SHAs are 40 character strings, abbreviations are used in the examples.}
+
+When a new commit 551b569 is created in \textbf{B}, \textbf{A} does not automatically use is.
+Only when a commit in \textbf{A} updates the SHA of \textbf{B} to 551b569, \textbf{A} will use the new commit.
+
+This allows for content to be added to \textbf{B} independently of \textbf{A}, parallelizing the process.
+\end{quote}
+
+As a commit in \git{} is only a local operation, nothing is shared with the remaining project groups before the changes are pushed to a server (or another member of the project group).
+If only the changes in \textbf{A} are pushed, then anyone trying to use this newest version of \textbf{A} will not be able to use the correct version of \textbf{B} as it only exists locally on one machine.
+
+This problem has arisen, as members of some groups have committed content in repositories to which they have no write access.
+They are then not able to push their changes but only their reference to the content that they can not push.
+In particular this problem exists due to the wrongful use of \texttt{git add .} where all content is blindly staged without concern for what content should actually be committed.
+
 \subsubsection{Deep clone}\label{git:sub:deep}
 %Gitolite}
 %Common problems
