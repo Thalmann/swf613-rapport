@@ -6,6 +6,7 @@ Such a framework could define a \textit{proper} structure for game development, 
 In \textit{''Beginning Android Games''}\cite{androidgames} an open source framework is suggested for game development.
 The framework is presented and described on kilobolt.com\cite{kilobolt} using a simple example of a game.
 The framework generalizes Java game development by defining a set of interfaces describing the structure of a game.
+How the framework is used can be seen in \cref{common_game_framework}.
 
 These interfaces are then implemented in an Android version specifying how the generalized framework should be executed on Android devices.
 In the implementations presented on kilobolt.com there are some inconsistencies between the interfaces and Android implementations.
@@ -18,7 +19,6 @@ Since the project for which the framework is used is Android-only, the generaliz
 \subsection{The framework}
 The following gives a description of the internals of the framework described above.
 Not every class in the framework will be described as not all are essential to its functionality.
-\bruno{UML klassediagram over vores implementation}
 \paragraph{The Game Activity}
 A game in the framework is implemented as an activity, allowing for simple interoperability with other Android components.
 The game itself is primarily a shell, connecting the parts of the framework.

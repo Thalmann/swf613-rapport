@@ -1,5 +1,6 @@
+\label{common_game_framework}
 The cars project has been built on an existing framework as mentioned shortly in \cref{s1_redesign}. 
-This made the creation of the game easier because the basic problems of game development on the android platform was already taken care of.
+This made the creation of the game easier because the basic problems of game development on the android platform were already taken care of.
 It was therefore relatively painless to get to the actual design of the game. 
 
 Some project proposals at the beginning of the semester suggested making more games for the citizens.
@@ -11,6 +12,9 @@ In this chapter the usage of the framework will be described in order to make it
 
 \section{Using the framework}
 The game framework is built around using screens to encapsulate different game-states. 
+
+In Cars there is used a couple of different screens.
+The main game is in one screen, and the possible events, such as car crashed, game paused and game won, are contained in a screen each.
 This encapsulation makes it very easy to keep an overview over the game even if there are a lot of states.
 
 \subsection{The GameActivity}
