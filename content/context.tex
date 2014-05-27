@@ -83,9 +83,9 @@ If any more contact was needed, such as arranging a meeting, this was conveyed b
 \subsection{Shared Components}\label{multiproject:sharedcomponents}
 There were two main shared components; database and GUI components.
 
-The database consisted of the storage of shared data, as well as providing an interface for accessing this data.
+The database consisted of the storage of shared data, as well as providing an interface (\lstinline|OasisLib|) for accessing this data.
 
-The GUI components consisted of shared graphical components, such as backgrounds, buttons and other things that were commonly used and needed to look the same across applications.
+The GUI components consisted of shared graphical components (\lstinline|giraf-components|), such as backgrounds, buttons and other things that were commonly used and needed to look the same across applications.
 
 As an addition to the shared components, whenever needed, groups would collaborate on minor shared components that could be used across applications.
 
@@ -113,9 +113,9 @@ The arguments for SVN were that it was the tool most students were accustomed to
 Git on the other hand had the benefit of having being set up by the previous students working on the GIRAF project.
 Git is also a superior version control tool as it performs branching and merging on a daily basis without conflicts, it allows for offline committing and, due to its distributed nature, automatically holds multiple backups of each project.
 
-To handle management of the Git repositories and assist with difficulties regarding Git a Git specialist was appointed.
-This specialist was part of the group developing the Cars application.
-Because of this one of the collaboration chapters focuses on Git (see \ref{collaboration:git}).
+To handle management of the Git repositories and assist with difficulties regarding Git, a Git specialist was appointed.
+This specialist was part of the project-group.
+Because of this, an entire chapter focuses on the use of Git (see \cref{collaboration:git}).
 
 \subsubsection{Jenkins}
 On the same server that hosted both Redmine and Git, Jenkins was also installed.
@@ -128,7 +128,7 @@ The two main reasons for using Jenkins were:
 As Android applications build to \texttt{.apk} files, these were to be stored and downloadable from an ftp server.
 This would ensure that the newest version of all applications were always available for installation.
 
-Unfortunately even though the build process was up and running, the \texttt{apk}s build by the server were not signed.
+Unfortunately, even though the build process was up and running, the \texttt{apk}s build by the server were not signed.
 This meant that they could not be installed on the customers' tablets.
 This issue was not resolved in the course of the semester.
 
