@@ -1,0 +1,58 @@
+\chapter{Git guide for Windows}\label{gitguide}
+The following section describes the setup of Git on a Windows system.
+This guide was written by the Git specialist and is included for additional reference on the use of Git.
+The guide was originally written in danish and has not been translated for this report, as it is not an essential part of this report.
+\section{Installation af Git}
+Git hentes på følgende url: \url{http://git-scm.com/download/win}.
+
+Under installationen kan man vælge at installere Git Bash som terminal.
+Det vil jeg personligt ikke anbefale, da der findes en extension til PowerShell der laver \textit{magi} og gør verden (på Windows) til et bedre sted.
+Opsætning af dette er forklaret i \ref{gitguide:powershell} \nameref{gitguide:powershell}.
+Man kan selvfølgelig også vælge at benytte en GUI til Git, omend det svækker mængden af kontrol man som bruger har over Git.
+
+\paragraph{Test af Git installation}
+Start den terminal du har mest lyst til at anvende (cmd.exe kan til nød anvendes her).
+Tjek herefter om git er blevet korrekt installeret og at git er tilføjet til din path ved at køre:
+\begin{lstlisting}
+git --version
+\end{lstlisting}
+Terminalen skulle gerne svare med din version af git (fx \texttt{git version 1.8.3.msysgit.0}).
+Hvis det ikke sker skal du tjekke at stien til git.exe (fx C:\textbackslash{}Program Files (x86)\textbackslash{}Git\textbackslash{}cmd\textbackslash{}) er i din path\footnote{Se evt \url{http://www.computerhope.com/issues/ch000549.htm}}.
+
+\section{Opsætning af PowerShell}\label{gitguide:powershell}
+PowerShell skal have rettigheder til at hente informationer som en del af følgende opsætning.
+Derfor skal \texttt{ExecutionPolicy} ændres fra default (\texttt{Restricted}) til \texttt{RemoteSigned}.
+Start PowerShell (som administrator) og udfør følgende kommando:
+\begin{lstlisting}
+Set-ExecutionPolicy RemoteSigned
+\end{lstlisting}
+
+Naviger herefter til en mappe hvor du gerne vil at Git gemmer posh-git.
+Når du har gjort dette kan posh-git hentes og installeres.
+Det gøres ved at ved at køre følgende kommandoer i PowerShell:
+\begin{lstlisting}
+git clone https://github.com/dahlbyk/posh-git.git
+cd posh-git
+.\install.ps1
+\end{lstlisting}
+Følg herefter installationens vejledninger.
+
+\section{ConEmu}
+\textbf{Con}sole \textbf{Emu}lator er en wrapper til din konsol (uanset hvilken konsol du anvender) der gør din Windows konsol til alt den den skulle have været.
+Blandt funktionerne kan nævnes transparency, fullscreen, global hotkeys, tabs og quake mode.
+Du finder ConEmu på \url{http://sourceforge.net/projects/conemu/}.
+
+ConEmu skal ikke installeres, men giver blot en \texttt{.7z} med executables.
+Når ConEmu er startet trykkes \texttt{Win+Alt+P} for at åbne settings.
+Alle indstillingsmuligheder vil ikke blive forklaret her - det er der ganske enkelt for mange muligheder til.
+
+\section{Ingen indtastning af username/password}
+Til sidst er her en vejledning i hvordan du slipper for at indtaste email og adgangskode hver gang du laver \texttt{push} eller \texttt{pull}.
+
+Hent den seneste version af \textit{Windows Credential Store for Git}\footnote{\url{http://gitcredentialstore.codeplex.com/releases/view/103679}} og start den.
+Det skulle gerne være nok.
+Hvis konsollen (som programmet starter) bliver hængende, så skal du i din terminal navigere til den mappe du har gemt programmet i og køre:
+\begin{lstlisting}
+git-credential-winstore -i "C:\Program Files (x86)\Git\cmd\git.exe"
+\end{lstlisting}
+Husk at rette \lstinline!C:\Program Files (x86)\Git\cmd\git.exe! til stien hvor git.exe er installeret.
