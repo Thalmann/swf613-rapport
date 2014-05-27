@@ -140,7 +140,7 @@ Where SVN copies all changes to files from your local machine to a server in one
 
 This difference was not properly understood by many of the groups, as they continued in the SVN workflow of always sharing each change (in order to keep commits small), or only committed seldom yielding large commits that were harder to merge with the remaining group members.
 
-Another major problem that arose from this was the use of the \texttt{git add .} command, which stages all content in the current directory.
+Another problem that arose from this was the use of the \texttt{git add .} command, which stages all content in the current directory.
 This command (without the use of \texttt{git status} and \texttt{git diff}) renders \git{} blind to what they are actually committing.
 The result was that often undesired code wash pushed to the shared server.
 A special type of problem resulting from this misuse of \git{} is explained in \cref{git:sub:sha}.
