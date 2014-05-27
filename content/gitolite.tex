@@ -5,27 +5,27 @@
 \textit{The following chapter regards \git{}, the server system \gitolite{} and the use of the two.
 Thus a basic knowledge of \git{} is expected on behalf of the reader.}
 \end{center}
-The code-base for the various applications and sub-projects that are part of the GIRAF project is quite big and requires that multiple people (possibly from different groups) can work on the same project at once.
+The code-base for the various applications and sub-projects, that are part of the GIRAF project, is quite big and requires that multiple people (possibly from different groups) can work on the same project at once.
 Thus a content management system is required to manage the code and its various revisions. 
 It was unanimously decided by all project groups to use \git{} as this content management system.
 One of the reasons for using \git{} was that that an administration tool had already been installed on the GIRAF server.
 In \cref{git:gitolite} this tool is described along with a guide to its usage.
 
-Some of the students partaking in the project where new to the use of \git{}.
+Some of the students partaking in the project were new to the use of \git{}.
 Because of this a \textit{''git specialist''} was chosen.
 This specialist was a member of the group developing \textit{Cars}.
 
 \section{\Gitolite{}}\label{git:gitolite}
 \Gitolite{} is an administration tool for git repositories.
-Interaction with \gitolite{} is done through a git repository in which all repositories are defined in one or more configuration files.
-Using hooks \gitolite{} will create repositories when new ones are defined.
+Interaction with \gitolite{} is done through a git repository in which all repos are defined in one or more configuration files.
+Using hooks, \gitolite{} will create repositories when new ones are defined.
 The syntax of these configuration files is described in \cref{git:gitolite:config}.
 
 \paragraph{Accessing the server}
 Each GIRAF repository is exposed through two urls.
 One is read-only and is publicly available.
-This allows projects to have other repo's as submodules without having write-access.
-It also simplifies the servers automated build as no authentication is required.
+This allows projects to have other repositories as submodules, but without having write-access.
+It also simplifies the server's automated build, as no authentication is required.
 The second url is one, to which access is restricted (see \cref{git:gitolite:config}).
 The two urls are as follows:
 \begin{center}
@@ -46,7 +46,7 @@ This repository can be found at the url below:
 In the \texttt{conf} directory in the repository, a collection of files define all the GIRAF repositories.
 To each repository a set of access rules apply.
 These are described throughout the following section.
-Note however that the access rules described below are only those applied in the course of the 2014 spring semester.
+Note, however, that the access rules described below are only those applied in the course of the 2014 spring semester.
 \Gitolite{} has an online manual\footnote{\url{http://gitolite.com/gitolite/master-toc.html}} for its usage to which one should refer for any additional information.
 
 \subsubsection{Users and groups}
@@ -70,7 +70,7 @@ To include a configuration file \textit{repos.conf} \gitolite{} has an \texttt{i
 \begin{center}
 \texttt{include "repos.conf"}
 \end{center}
-This command can also be used in configuration files included using the command, and is usefull when trying to separate various types of repositories.
+This command can also be used in configuration files included using the command, and is useful when trying to separate various types of repositories.
 
 \subsubsection{Defining a repository}
 Defining a new repository in \gitolite{} is very simple.
@@ -81,7 +81,7 @@ The following command defines a repository name newrepo:
 \texttt{repo newrepo}
 \end{center}
 Note that this definition does not explicitly tell \gitolite{} to create the new repository, just that it should exist.
-Thus the same repo can be defined multiple places with different sets of access rules.
+Thus, the same repo can be defined multiple places with different sets of access rules.
 This allows for separating different types of access rules into different files (for instance a separate config file can hold any temporary access rules).
 
 \subsubsection{Access rules}
@@ -130,7 +130,7 @@ This in turn means that the remaining rules only restrict write access to the re
 \Git{} is a quite flexible tool for managing code.
 One of the reasons for this is the number of commands provided by \git{}.
 This was the main cause of problems with the usage of \git{}, as many of the student working on the GIRAF project were new to \git{}.
-Thus the git specialist spend a lot of time supporting other groups in the efforts to use \git{}.
+Thus the git specialist spent a lot of time supporting other groups in the efforts to use \git{}.
 This included, in part, an introductory presentation to \git{} early in the semester.
 The following chapter will describe some of the typical issues with \git{} encountered during the project.
 
@@ -195,7 +195,7 @@ In particular this problem exists due to the wrongful use of \texttt{git add .} 
 
 \subsubsection{Deep clone}\label{git:sub:deep}
 The GIRAF repository \texttt{OasisLib} is referenced by multiple project.
-Amongst those both \texttt{giraf-component} and \texttt{cars}.
+Amongst those are both \texttt{giraf-component} and \texttt{cars}.
 As the latter also includes \texttt{giraf-component} this infers a duplicate inclusion of \texttt{OasisLib} in \texttt{cars}.
 The situation has been illustrated in \cref{git:sub:clonefig}.
 \begin{figure}[h]
@@ -212,8 +212,7 @@ The situation has been illustrated in \cref{git:sub:clonefig}.
 \caption{Deep clone of the \texttt{cars} repository.}
 \label{git:sub:clonefig}
 \end{figure}
-The figure illustrates the submodules associated with the \texttt{cars} repository.
-There were however other repositories with a much larger tree of submodules.
+The figure illustrates the submodules associated with the \texttt{cars} repository (there were however other repositories with a much larger tree of submodules).
 In the development environment only the topmost level of submodules were used and thus the remaining were not to be cloned.
 However many groups performed a \textit{deep clone} in which they cloned the entire structure.
 This is not directly a problem, but the cause of much confusion.
