@@ -4,6 +4,8 @@ Using the volume recorded by the microphone, a value in the interval $[0-1]$ is 
 The value is then mapped linearly to a vertical position in the game.
 The car is then moved to this position on the game field.
 
+This section will explain the different methods of stabilization of the car that was considered when trying to improve the motion of the car.
+
 \paragraph{Positioning the car}
 Given a vertical position where the car \textit{should} be placed, the car could simple be moved to its destination on each frame update.
 This is the simplest solution as it requires no additional translation of the position input.
@@ -61,10 +63,10 @@ For larger spikes a bigger value of $x$ is required to compensate.
 The result of this is a significant delay in the effect of raising the volume of ones voice.
 
 \subsection{Acceleration and deceleration}\label{stability:acceleration}
-Another approach to managing the position of the is by having the car accelerate and decelerate when moving vertically.
+Another approach to managing the position is by having the car accelerate and decelerate when moving vertically.
 Spikes in volume would then be met with a deceleration in speed.
 But as they are often quite short-lived the car would quickly accelerate again.
-Thus the spikes problem is solvable using this methodology.
+Thus the spike problem is solvable using this methodology.
 Meanwhile the delay associated with averaging the measurements (section \ref{stability:average}) does not occur as the car always accelerates or decelerates depending on the actual input.
 Using this method for moving the car can be defined as below:
 $$c_f = c_{f-1} + s_f \cdot \lambda_f$$

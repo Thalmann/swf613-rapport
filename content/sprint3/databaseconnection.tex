@@ -13,7 +13,8 @@ Settings are saved whenever the settings or map-editor activities are terminated
 \paragraph{Accessing the database}
 
 In order to access the local database (called LocalDB within GIRAF), a library \lstinline|OasisLib| must be used.
-\lstinline|OasisLib| makes available various controllers, the one used for saving and loading settings is called \lstinline|ProfileApplicationController|.
+\lstinline|OasisLib| makes available various controllers.
+The one used for saving and loading settings is called \lstinline|ProfileApplicationController|.
 By supplying the current \lstinline|Application|, which is a class that contains all identifying information about an application (name, package-name etc.) and the current profile id, a \lstinline|ProfileApplication| can be obtained, containing the settings for the corresponding application and profile.
 \lstinline|ProfileApplicationController| also contains methods for obtaining and modifying the loaded \lstinline|ProfileApplication|.
 

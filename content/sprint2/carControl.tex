@@ -1,5 +1,5 @@
 \subsection{Control of the car}\label{sprint2:car_control}
-At the interview the costumers expressed that they needed to change how the car was controlled.
+At the interview the stakeholders expressed that they needed to change how the car was controlled.
 They wanted the car to reflect the current sound level of the speech recorded by the microphone.
 This is expressed in requirement \ref{sprint2:tab1:req2} in \cref{sprint2:requirement_table_1}.
 
@@ -7,7 +7,7 @@ This has been implemented in the game by mapping the values recorded by the micr
 This mapping is shown on \cref{mapping}.
 The microphone records sounds and outputs values between 0 and some max value, shown as 1000 for simplicity.
 When calibrating the microphone two values are defined, the minimum value reflecting background noise caught by the microphone, and the maximum value determined by the sound level of the player's shouting.
-These two values are mapped to values between 0 and the size of the road, in the example 800.
+These two values are mapped to values between 0 and the height of the road, in the example 800.
 
 The returned value is the position on the screen where the car needs to drive towards at the current sound level.
 

@@ -1,5 +1,5 @@
 \section{Design and Implementation}
-After the interview with Tove there was some major changes to be implemented.
+After the interview with Tove there was some changes to be implemented.
 The new requirements are mentioned in \cref{sprint4:requirement_table} and the changes made to satisfy these requirements will be described in this section.
 Additionally, due to a change in the way the active profile is changed, a new profile-selector button was added to the main menu.
 
@@ -14,7 +14,7 @@ According to \cref{sprint4_objective} (see \cref{sprint4:requirement_table}) the
 The game also had to be changed so the items on the road had to be collected instead of avoided.
 These changes introduced some changes to the logic on how to determine when the player wins.
 Now it is necessary for the player to collect all items before reaching the finishing line. 
-The new appearance can be seen on \cref{game_with_finishing_line}, where the new star model for items also is seen.
+The new appearance can be seen on \cref{game_with_finishing_line}, where the new star model for items is also depicted.
 This new model was introduced to be able to distinguish the two game modes from each other.
 Choosing between the two modes was implemented in settings as seen on \cref{gamemode}
 
@@ -56,7 +56,7 @@ Another requirement that introduced changes to the application was \cref{sprint4
 All buttons now have to say their text when pressed and events need to have a sounds associated.
 
 It was also a request to make the buttons look more like buttons visually.
-The changes to the appearance can be seen on \cref{Buttons}, where \cref{old} shows the old appearance where a button was only the text and \cref{new} shows the new appearance where a border and background color has been added, making the button resemble a traditional button more.
+The changes to the appearance can be seen on \cref{Buttons}, where \cref{old} shows the old appearance (where a button was only the text) and \cref{new} shows the new appearance (where a border and background color has been added), making the button resemble a traditional button more.
 
 \subsection{ProfileSelector}
 As of this sprint, \lstinline|giraf-component| library now provides a \lstinline|GButtonProfileSelect| class, to overcome a change in how profiles are switched.
