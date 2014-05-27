@@ -24,16 +24,19 @@
 \end{center}
 \end{titlepage}
 
-\pagenumbering{Roman}
-
 \thispagestyle{empty}
-\phantom{p. 2}
+\phantom{p. 1}
 \clearpage
 
 \input{frontmatter/title_sheet.tex}
 \clearpage
 
-\setcounter{page}{4}
+\thispagestyle{empty}
+\phantom{p. 2}
+\clearpage
+
+\pagenumbering{Roman}
+\setcounter{page}{1}
 \setcounter{secnumdepth}{3}
 
 \newcommand{\prefaceHeaderName}{Preface}
@@ -131,6 +134,8 @@
 
 \chapter{Reflections}
 \input{content/reflections}
+
+\label{LastNormalPage}
 
 \appendix
 % PART ******************************
