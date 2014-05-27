@@ -24,17 +24,15 @@
 \end{center}
 \end{titlepage}
 
-\pagenumbering{Roman}
-\setcounter{page}{1}
 \setcounter{secnumdepth}{3}
 
-\thispagestyle{empty}
-\phantom{p. 1}
-\clearpage
+
 
 \input{frontmatter/title_sheet.tex}
-\clearpage
+\pagestyle{plain}
 
+\pagenumbering{Roman}
+\setcounter{page}{1}
 \newcommand{\prefaceHeaderName}{Preface}
 \section*{\prefaceHeaderName}
 \input{frontmatter/preface.tex}
