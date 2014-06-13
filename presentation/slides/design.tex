@@ -3,80 +3,16 @@
 
 \subsection{Framework}
 \begin{frame}
-\frametitle{Vild titel}
+\frametitle{Brug af framework}
 \begin{itemize}
-\item Abstrahere væk fra Android platformen
+\item Abstraherer væk fra Android platformen
 \item Opbygget omkring brug af forskellige \textit{''screens''}
-\item Spillet er indeholdt i en aktivitet
+\item Spillet er indeholdt i en \textit{''activity''}
 \item Til grafik og lyd er der en klasse til hver der eksponerer basale metoder
 \item \textit{''Deltatime''} er den tid der går mellem hver frame
 \end{itemize}
 \end{frame}
 
-
-\subsection{Kontrol af bil}
-\begin{frame}
-\frametitle{Det gamle Cars}
-\begin{itemize}
-\item Kontrol af bilen var baseret på frekvens(mere om det her måske???)
-\item Det var svært at styre, hvis ikke umuligt
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Sprint 2}
-\begin{itemize}
-\item Skiftet fra frekvens til volumen
-\item Krav: \textit{The car is controlled in such a way,
-that the vertical position of the car is relative
-to the current loudness of the player's voice.}
-\end{itemize}
-\begin{figure}
-\centering
-\input{../content/sprint2/tikz-control-mapping}
-\caption{The mapping from microphone input to position on the screen}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Sprint 3}
-\begin{itemize}
-\item Stabilisering af bilen
-\item Forskellige afprøvede metoder:
-\begin{itemize}
-\item Linær bevægelse(???)
-\item Gennemsnit
-\item Acceleration og deceleration (Valgt)
-\end{itemize}
-\end{itemize}
-\end{frame}
-
-
-\subsection{Kalibrering}
-\begin{frame}
-\frametitle{title--}
-\begin{itemize}
-\item Krav: \textit{It must be possible to calibrate the microphone}
-\item Kalibreringen sætter en max og en min værdi
-\item Projektets problembarn
-\item Den grafiske fremstilling i indstillinger var meget udfordrende
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Visuelle udvikling for kalibrering(vildeste titel.--")}
-\begin{figure}
-\begin{subfigure}[b]{0.4\textwidth}
-\includegraphics[width=130px]{sprint2/settings}
-\caption{The settings activity from sprint 2}
-\end{subfigure}
-~
-\begin{subfigure}[b]{0.4\textwidth}
-\includegraphics[width=130px]{sprint4/settings_s4}
-\caption{The settings activity from sprint 4}
-\end{subfigure}
-\end{figure}
-\end{frame}
 
 \subsection{Mål med spillet}
 \begin{frame}
@@ -84,7 +20,6 @@ to the current loudness of the player's voice.}
 Undgå forskellige forhindringer og køre i den garage som har den samme farve som bilen
 \begin{figure}
 \includegraphics[width=130px]{sprint1/cars_screenshot}
-\caption{The old cars}
 \end{figure}
 \end{frame}
 
@@ -108,13 +43,106 @@ all items (two different game modes)}
 \end{subfigure}
 \end{figure}
 \end{frame}
-\subsection{GUI}
+
+
+\subsection{Kontrol af bil}
 \begin{frame}
-\frametitle{Bane og settings}
-synes jeg ikke er nødvendig når vi har goal of the game, barometre og kalibrering..
+\frametitle{Det gamle Cars}
+\begin{itemize}
+\item Kontrol af bilen var baseret på frekvens
+\item Det var svært at styre, hvis ikke umuligt
+\end{itemize}
+\begin{figure}[h]
+\centering
+\begin{subfigure}[t]{.45\textwidth}
+\includegraphics[width=\textwidth]{sprint1/spectrum_tonegenerator}
+\caption{Frequency spectrum for a 440 Hz generated tone}
+\end{subfigure}
+\begin{subfigure}[t]{.45\textwidth}
+\includegraphics[width=\textwidth]{sprint1/spectrum_highpitchvoice}
+\caption{Frequency spectrum for human voice input (in an attempt to reach 1200Hz)}
+\end{subfigure}
+\end{figure}
 \end{frame}
+
 \begin{frame}
-\frametitle{Barometre}
+\frametitle{Sprint 2}
+\begin{itemize}
+\item Skiftet fra frekvens til volumen
+\item Krav: \textit{The car is controlled in such a way,
+that the vertical position of the car is relative
+to the current loudness of the player's voice.}
+\end{itemize}
+\begin{figure}
+\centering
+\input{../content/sprint2/tikz-control-mapping}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sprint 3}
+\begin{itemize}
+\item Stabilisering af bilen
+\item Forskellige afprøvede metoder:
+\begin{itemize}
+\item Gennemsnit
+\item Acceleration og deceleration (valgt)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\subsection{Kalibrering}
+\begin{frame}
+\frametitle{Kalibrering af mikrofonen}
+\begin{itemize}
+\item Krav: \textit{It must be possible to calibrate the microphone}
+\item Kalibreringen sætter en max og en min værdi
+\item Projektets problembarn
+\item Den grafiske fremstilling i indstillinger var meget udfordrende
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Visuel udvikling}
+\begin{figure}
+\begin{subfigure}[b]{0.4\textwidth}
+\includegraphics[width=130px]{sprint2/settings}
+\caption{The settings activity from sprint 2}
+\end{subfigure}
+~
+\begin{subfigure}[b]{0.4\textwidth}
+\includegraphics[width=130px]{sprint4/settings_s4}
+\caption{The settings activity from sprint 4}
+\end{subfigure}
+\end{figure}
+\end{frame}
+
+
+\subsection{Map editor}
+\begin{frame}
+\frametitle{Sprint 2}
+\begin{itemize}
+\item Krav: \textit{The placement and number of obstacles is alterable.}
+\item Krav: \textit{The placement of obstacles should be
+in such a way,
+that it is possible to adapt it to both citizen
+with tendency to speaking too loud
+as well as those speaking too low.}
+\end{itemize}
+\begin{figure}[h]
+\includegraphics[width=0.5\linewidth]{sprint2/map_editor}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sprint 4}
+Billede af endelige mapeditor med slet alt knap mållinie og stjerner??
+\end{frame}
+
+\subsection{Barometre}
+\begin{frame}
+\frametitle{Barometre fra institutionen}
 \begin{figure}[h]
 	\centering
         \begin{subfigure}[b]{0.4\textwidth}
@@ -126,31 +154,26 @@ synes jeg ikke er nødvendig når vi har goal of the game, barometre og kalibrer
                 \includegraphics[width=\textwidth]{sprint2/speed}
                 \caption{Hastighedsbarometer}
         \end{subfigure}
-        \caption{Barometre brugt i 'Birken'}
 \end{figure}
 \end{frame}
 
 \begin{frame}
-\frametitle{Barometre}
+\frametitle{Lydebarometer}
 \begin{itemize}
-\item Krav omkring at inkorporere disse barometre i spillet
 \item Tal mellem 0 og 10 på bil, forhindringer og stjerner
 \item Mulighed for at pause spillet og se hvor man er henne på barometret
-\item Vælge hastighed ud fra et barometer
 \end{itemize}
+\begin{figure}
+\includegraphics[width=200px]{sprint2/pause}
+\end{figure}
 \end{frame}
 
 \begin{frame}
-\frametitle{Barometre}
+\frametitle{Hastighedsbarometer}
+\begin{itemize}
+\item Vælge hastighed ud fra et barometer
+\end{itemize}
 \begin{figure}
-\begin{subfigure}[b]{0.4\textwidth}
-\includegraphics[width=130px]{sprint2/pause}
-\caption{The settings activity from sprint 2}
-\end{subfigure}
-~
-\begin{subfigure}[b]{0.4\textwidth}
-\includegraphics[width=130px]{sprint4/settings_s4}
-\caption{The settings activity from sprint 4}
-\end{subfigure}
+\includegraphics[width=200px]{sprint4/settings_s4}
 \end{figure}
 \end{frame}
