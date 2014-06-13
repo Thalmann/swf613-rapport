@@ -16,6 +16,15 @@
 
 \subsection{Mål med spillet}
 \begin{frame}
+\frametitle{Overordnet}
+\begin{itemize}
+\item Ændret sig markant
+\item Garager
+\item Mållinie
+\end{itemize}
+\end{frame}
+
+\begin{frame}
 \frametitle{Gamle Cars}
 Undgå forskellige forhindringer og køre i den garage som har den samme farve som bilen
 \begin{figure}
@@ -34,18 +43,27 @@ all items (two different game modes)}
 \begin{figure}
 \begin{subfigure}[b]{0.4\textwidth}
 \includegraphics[width=125px]{sprint2/sound_gauge}
-\caption{Sprint 2}
+\caption*{Sprint 2}
 \end{subfigure}
 ~
 \begin{subfigure}[b]{0.4\textwidth}
 \includegraphics[width=125px]{sprint4/game}
-\caption{Sprint 4}
+\caption*{Sprint 4}
 \end{subfigure}
 \end{figure}
 \end{frame}
 
 
 \subsection{Kontrol af bil}
+\begin{frame}
+\frametitle{Overordnet}
+\begin{itemize}
+\item Styring ændret en del gange
+\item Frekvens
+\item Volumen
+\end{itemize}
+\end{frame}
+
 \begin{frame}
 \frametitle{Det gamle Cars}
 \begin{itemize}
@@ -56,11 +74,11 @@ all items (two different game modes)}
 \centering
 \begin{subfigure}[t]{.45\textwidth}
 \includegraphics[width=\textwidth]{sprint1/spectrum_tonegenerator}
-\caption{Frequency spectrum for a 440 Hz generated tone}
+\caption*{Frequency spectrum for a 440 Hz generated tone}
 \end{subfigure}
 \begin{subfigure}[t]{.45\textwidth}
 \includegraphics[width=\textwidth]{sprint1/spectrum_highpitchvoice}
-\caption{Frequency spectrum for human voice input (in an attempt to reach 1200Hz)}
+\caption*{Frequency spectrum for human voice input (in an attempt to reach 1200Hz)}
 \end{subfigure}
 \end{figure}
 \end{frame}
@@ -107,19 +125,26 @@ to the current loudness of the player's voice.}
 \frametitle{Visuel udvikling}
 \begin{figure}
 \begin{subfigure}[b]{0.4\textwidth}
-\includegraphics[width=130px]{sprint2/settings}
-\caption{The settings activity from sprint 2}
+\includegraphics[width=70px]{sprint2/calibration}
+\caption*{Sprint 2}
 \end{subfigure}
 ~
 \begin{subfigure}[b]{0.4\textwidth}
-\includegraphics[width=130px]{sprint4/settings_s4}
-\caption{The settings activity from sprint 4}
+\includegraphics[width=130px]{sprint4/calibration}
+\caption*{Sprint 4}
 \end{subfigure}
 \end{figure}
 \end{frame}
 
 
 \subsection{Map editor}
+\begin{frame}
+\frametitle{Overordnet}
+\begin{itemize}
+\item Bruges til at placere forhindringer og stjerner
+\item Tilpasse banen til borgeren
+\end{itemize}
+\end{frame}
 \begin{frame}
 \frametitle{Sprint 2}
 \begin{itemize}
@@ -149,21 +174,27 @@ as well as those speaking too low.}
 	\centering
         \begin{subfigure}[b]{0.4\textwidth}
                 \includegraphics[width=\textwidth]{sprint2/sound}
-                \caption{Lydbarometer}
+                \caption*{Lydbarometer}
         \end{subfigure}%
         ~
         \begin{subfigure}[b]{0.4\textwidth}
                 \includegraphics[width=\textwidth]{sprint2/speed}
-                \caption{Hastighedsbarometer}
+                \caption*{Hastighedsbarometer}
         \end{subfigure}
 \end{figure}
 \end{frame}
 
 \begin{frame}
-\frametitle{Lydebarometer}
+\frametitle{Lydbarometer}
 \begin{itemize}
-\item Tal mellem 0 og 10 på bil, forhindringer og stjerner
-\item Mulighed for at pause spillet og se hvor man er henne på barometret
+\item Krav: \textit{There is a digit between 0 and 10
+displayed on the car as well as obstacles,
+representing the loudness level,
+based on its vertical position.}
+\item Krav: \textit{It should be possible to pause the game.
+When the game is paused,
+a loudness-barometer is displayed next to the car,
+further visualizing the current loudness.}
 \end{itemize}
 \begin{figure}
 \includegraphics[width=200px]{sprint2/pause}
@@ -173,7 +204,11 @@ as well as those speaking too low.}
 \begin{frame}
 \frametitle{Hastighedsbarometer}
 \begin{itemize}
-\item Vælge hastighed ud fra et barometer
+\item Krav: \textit{Besides the scales from 0 to 10,
+both speed and loudness have pictograms
+illustrating some of the values on these scales.}
+\item Krav: \textit{Speed is alterable. The speed level
+is represented as a digit between 0 and 10.}
 \end{itemize}
 \begin{figure}
 \includegraphics[width=200px]{sprint4/settings_s4}
