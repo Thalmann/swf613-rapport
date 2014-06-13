@@ -49,9 +49,20 @@ all items (two different game modes)}
 \begin{frame}
 \frametitle{Det gamle Cars}
 \begin{itemize}
-\item Kontrol af bilen var baseret på frekvens(mere om det her måske???)
+\item Kontrol af bilen var baseret på frekvens
 \item Det var svært at styre, hvis ikke umuligt
 \end{itemize}
+\begin{figure}[h]
+\centering
+\begin{subfigure}[t]{.45\textwidth}
+\includegraphics[width=\textwidth]{sprint1/spectrum_tonegenerator}
+\caption{Frequency spectrum for a 440 Hz generated tone}
+\end{subfigure}
+\begin{subfigure}[t]{.45\textwidth}
+\includegraphics[width=\textwidth]{sprint1/spectrum_highpitchvoice}
+\caption{Frequency spectrum for human voice input (in an attempt to reach 1200Hz)}
+\end{subfigure}
+\end{figure}
 \end{frame}
 
 \begin{frame}
@@ -108,14 +119,30 @@ to the current loudness of the player's voice.}
 \end{frame}
 
 
-
-\subsection{GUI}
+\subsection{Map editor}
 \begin{frame}
-\frametitle{Bane og settings}
-synes jeg ikke er nødvendig når vi har goal of the game, barometre og kalibrering..
+\frametitle{Sprint 2}
+\begin{itemize}
+\item Krav: \textit{The placement and number of obstacles is alterable.}
+\item Krav: \textit{The placement of obstacles should be
+in such a way,
+that it is possible to adapt it to both citizen
+with tendency to speaking too loud
+as well as those speaking too low.}
+\end{itemize}
+\begin{figure}[h]
+\includegraphics[width=0.5\linewidth]{sprint2/map_editor}
+\end{figure}
 \end{frame}
+
 \begin{frame}
-\frametitle{Barometre}
+\frametitle{Sprint 4}
+Billede af endelige mapeditor med slet alt knap mållinie og stjerner??
+\end{frame}
+
+\subsection{Barometre}
+\begin{frame}
+\frametitle{Barometre fra institutionen}
 \begin{figure}[h]
 	\centering
         \begin{subfigure}[b]{0.4\textwidth}
@@ -131,24 +158,22 @@ synes jeg ikke er nødvendig når vi har goal of the game, barometre og kalibrer
 \end{frame}
 
 \begin{frame}
-\frametitle{Barometre}
+\frametitle{Lydebarometer}
 \begin{itemize}
-\item Krav omkring at inkorporere disse barometre i spillet
 \item Tal mellem 0 og 10 på bil, forhindringer og stjerner
 \item Mulighed for at pause spillet og se hvor man er henne på barometret
-\item Vælge hastighed ud fra et barometer
 \end{itemize}
+\begin{figure}
+\includegraphics[width=200px]{sprint2/pause}
+\end{figure}
 \end{frame}
 
 \begin{frame}
-\frametitle{Barometre}
+\frametitle{Hastighedsbarometer}
+\begin{itemize}
+\item Vælge hastighed ud fra et barometer
+\end{itemize}
 \begin{figure}
-\begin{subfigure}[b]{0.4\textwidth}
-\includegraphics[width=130px]{sprint2/pause}
-\end{subfigure}
-~
-\begin{subfigure}[b]{0.4\textwidth}
-\includegraphics[width=130px]{sprint4/settings_s4}
-\end{subfigure}
+\includegraphics[width=200px]{sprint4/settings_s4}
 \end{figure}
 \end{frame}
